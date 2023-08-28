@@ -66,27 +66,41 @@ Step 1: 创建一个仓库：<username>.github.io
 
 Step 2: 在<your_blog_name>（<username>.github.io）安装部署插件
 
-```
+```shell
  npm install hexo-deployer-git --save
  npm install hexo-server --save
 ```
 
 Step 3: 部署到 GitHub
 
-```
+```shell
  hexo clean && hexo d -g
+```
+
+### GitHub保存博客项目的源代码
+
+```shell
+# 本地博客项目根目录下运行
+git init
+git checkout -b hexo # 切换分支
+git add .
+git commit -m "init"
+git remote add origin git@github.com:isJinHu/isjinhu.github.io.git # 添加远程仓库
+git remote -v
+git push origin hexo:hexo # push到远程仓库的hexo分支
 ```
 
 ## 其他
 
 1. `hexo new <artical_name>`创建一篇新文章
 
-2. `/scaffolds/post.md`: 修改post模板，可以设置默认打开数学公式渲染等
+2. Gitalk设置：[comment | Keep 主题使用指南](https://keep-docs.xpoet.cn/tutorial/configuration-guide/comment.html#gitalk)
 
-	```
-	title: {{ title }}
-	date: {{ date }}
-	mathjax: true
-	tags:
-	```
-	
+3. `/scaffolds/post.md`: 修改post模板，可以设置默认打开数学公式渲染等
+
+  ```yaml
+  title: {{ title }}
+  date: {{ date }}
+  mathjax: true
+  tags:
+  ```
