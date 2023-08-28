@@ -162,7 +162,7 @@ toc:
   number: true      # Option values: true | false
 
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
-  expand_all: false  # Option values: true | false
+  expand_all: true  # Option values: true | false
 
   # If true, auto open TOC every time when you enter the article page
   init_open: true    # Option values: true | false
@@ -198,7 +198,7 @@ local_search:
 # Docs: https://keep-docs.xpoet.cn/tutorial/configuration-guide/comment.html
 # ---------------------------------------------------------------------------------------
 comment:
-  enable: true   # Option values: true | false
+  enable: false   # Option values: true | false
   use: gitalk     # Option values: valine | gitalk | twikoo | waline | giscus
 
   # Valine

@@ -102,9 +102,9 @@ theme: keep
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: 'git'
-  repo: https://github.com/isJinHu/isjinhu.github.io.git
-  barnch: main
+  type: git
+  barnch: master
+  repository: git@github.com:isjinhu/isjinhu.github.io.git
 
 # Search
 ## Dependencies:

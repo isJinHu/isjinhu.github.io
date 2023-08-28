@@ -104,3 +104,12 @@ git push origin hexo:hexo # push到远程仓库的hexo分支
   mathjax: true
   tags:
   ```
+
+## Hexo deploy失败？
+
+> [执行Hexo d报错Spawn failed， 以及OpenSSL SSL_read: Connection was reset, errno 10054_copying files from extend dirs...warning: in the w_Candle_light的博客-CSDN博客](https://blog.csdn.net/Candle_light/article/details/114992784)
+
+```shell
+hexo config deploy.repository git@github.com:isjinhu/isjinhu.github.io.git
+```
+
