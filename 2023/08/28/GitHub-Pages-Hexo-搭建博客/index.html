@@ -27,7 +27,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"isjinhu.github.io","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"style":{"primary_color":"#fac03d","logo":"/images/happy.png","favicon":"/images/happy.png","avatar":"/images/blogger.svg","first_screen":{"enable":false,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":true,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"isJinHu","github_admins":null,"repository":"isjinhu.github.io","client_id":"7beec2c37d75fa0938fe","client_secret":"9ddb60cd22736e89bb210fcdc037623e5ea20925","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false}},"post":{"author_label":{"enable":false,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"img_align":"center"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"version":"3.7.3"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"style":{"primary_color":"#fac03d","logo":"/images/happy.png","favicon":"/images/happy.png","avatar":"/images/blogger.svg","first_screen":{"enable":false,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"isJinHu","github_admins":null,"repository":"isjinhu.github.io","client_id":"7beec2c37d75fa0938fe","client_secret":"9ddb60cd22736e89bb210fcdc037623e5ea20925","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false}},"post":{"author_label":{"enable":false,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"img_align":"center"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"version":"3.7.3"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -314,7 +314,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc">2023-08-28 13:39:43</span>
+                <span class="pc">2023-08-28 14:57:35</span>
             </span>
         
 
@@ -414,6 +414,13 @@ mjx-container[display="true"] + br {
 </li>
 </ol>
   <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> {{ <span class="string">title</span> }}</span><br><span class="line"><span class="attr">date:</span> {{ <span class="string">date</span> }}</span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">tags:</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Hexo-deploy失败？"><a href="#Hexo-deploy失败？" class="headerlink" title="Hexo deploy失败？"></a>Hexo deploy失败？</h2><blockquote>
+<p><a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/Candle_light/article/details/114992784">执行Hexo d报错Spawn failed， 以及OpenSSL SSL_read: Connection was reset, errno 10054_copying files from extend dirs…warning: in the w_Candle_light的博客-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo config deploy.repository git@github.com:isjinhu/isjinhu.github.io.git</span><br></pre></td></tr></table></figure>
+
+
             </div>
 
             
@@ -458,58 +465,6 @@ mjx-container[display="true"] + br {
                 
 
 
-    <div class="comments-container">
-        <div id="comments-anchor"></div>
-        <div class="comment-area-title">
-            <i class="fas fa-comments"></i>&nbsp;评论
-        </div>
-        
-            
-
-    <div class="gitalk-comment-container">
-        <div id="gitalk-container"></div>
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
-        <script data-pjax src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
-        <script data-pjax>
-          function loadGitalk() {
-            let __gitalk__pathname = decodeURI(location.pathname);
-            const __gitalk__pathnameLength = __gitalk__pathname.length;
-            const __gitalk__pathnameMaxLength = 50;
-            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
-              __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
-            }
-
-            try {
-              Gitalk && new Gitalk({
-                clientID: '7beec2c37d75fa0938fe',
-                clientSecret: '9ddb60cd22736e89bb210fcdc037623e5ea20925',
-                repo: 'isjinhu.github.io',
-                owner: 'isJinHu',
-                admin: 'isJinHu',
-                id: __gitalk__pathname,
-                proxy: '',
-                language: 'zh-CN'
-              }).render('gitalk-container');
-            } catch (e) {
-              window.Gitalk = null;
-            }
-          }
-
-          if ('true' === 'true') {
-            const loadGitalkTimeout = setTimeout(() => {
-              loadGitalk();
-              clearTimeout(loadGitalkTimeout);
-            }, 1000);
-          } else {
-            window.addEventListener('DOMContentLoaded', loadGitalk);
-          }
-        </script>
-    </div>
-
-
-        
-    </div>
-
 
 
 
@@ -521,7 +476,7 @@ mjx-container[display="true"] + br {
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-Pages-Hexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">GitHub Pages &amp; Hexo 搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">Hexo 安装与配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo%E7%9A%84keep%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">Hexo的keep主题安装与配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8GitHub-Pages%E9%83%A8%E7%BD%B2%E5%88%B0GitHub"><span class="nav-number">1.3.</span> <span class="nav-text">使用GitHub Pages部署到GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub%E4%BF%9D%E5%AD%98%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">GitHub保存博客项目的源代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.4.</span> <span class="nav-text">其他</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-Pages-Hexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">GitHub Pages &amp; Hexo 搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">Hexo 安装与配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo%E7%9A%84keep%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">Hexo的keep主题安装与配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8GitHub-Pages%E9%83%A8%E7%BD%B2%E5%88%B0GitHub"><span class="nav-number">1.3.</span> <span class="nav-text">使用GitHub Pages部署到GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub%E4%BF%9D%E5%AD%98%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">GitHub保存博客项目的源代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.4.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-deploy%E5%A4%B1%E8%B4%A5%EF%BC%9F"><span class="nav-number">1.5.</span> <span class="nav-text">Hexo deploy失败？</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -594,11 +549,6 @@ mjx-container[display="true"] + br {
 
         <!-- PC go comment -->
         
-            <li class="tools-item flex-center go-to-comments">
-                <i class="fas fa-comment"></i>
-                <span class="post-comments-count"></span>
-            </li>
-        
     </ul>
 </div>
 
@@ -638,10 +588,6 @@ mjx-container[display="true"] + br {
             </li>
         
 
-        
-            <li class="tools-item go-to-comments-tablet flex-center">
-                <i class="fas fa-comment"></i>
-            </li>
         
 
         <li class="tools-item tool-toggle-show flex-center">
@@ -703,7 +649,7 @@ mjx-container[display="true"] + br {
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-Pages-Hexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">GitHub Pages &amp; Hexo 搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">Hexo 安装与配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo%E7%9A%84keep%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">Hexo的keep主题安装与配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8GitHub-Pages%E9%83%A8%E7%BD%B2%E5%88%B0GitHub"><span class="nav-number">1.3.</span> <span class="nav-text">使用GitHub Pages部署到GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub%E4%BF%9D%E5%AD%98%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">GitHub保存博客项目的源代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.4.</span> <span class="nav-text">其他</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-Pages-Hexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">GitHub Pages &amp; Hexo 搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">Hexo 安装与配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo%E7%9A%84keep%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">Hexo的keep主题安装与配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8GitHub-Pages%E9%83%A8%E7%BD%B2%E5%88%B0GitHub"><span class="nav-number">1.3.</span> <span class="nav-text">使用GitHub Pages部署到GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub%E4%BF%9D%E5%AD%98%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">GitHub保存博客项目的源代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.4.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo-deploy%E5%A4%B1%E8%B4%A5%EF%BC%9F"><span class="nav-number">1.5.</span> <span class="nav-text">Hexo deploy失败？</span></a></li></ol></li></ol>
     </div>
 </div>
 
