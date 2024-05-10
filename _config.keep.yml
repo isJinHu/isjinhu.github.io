@@ -207,7 +207,7 @@ local_search:
 # Docs: https://keep-docs.xpoet.cn/tutorial/configuration-guide/comment.html
 # ---------------------------------------------------------------------------------------
 comment:
-  enable: false   # Option values: true | false
+  enable: true   # Option values: true | false
   use: gitalk     # Option values: valine | gitalk | twikoo | waline | giscus
 
   # Valine
@@ -226,8 +226,8 @@ comment:
     github_id: isJinHu       # GitHub repo owner
     github_admins:    # GitHub Admins (in Array type), optional
     repository: isjinhu.github.io      # Repository name to store issues
-    client_id: 7beec2c37d75fa0938fe       # GitHub Application Client ID
-    client_secret: 9ddb60cd22736e89bb210fcdc037623e5ea20925    # GitHub Application Client Secret
+    client_id: Ov23liUcikq2FLnWx5iw       # GitHub Application Client ID
+    client_secret: 3efae58b55071f8a7d97d3ba91dd57f2d1e846f2    # GitHub Application Client Secret
     proxy:            # GitHub oauth request reverse proxy for CORS
 
   # Twikoo
