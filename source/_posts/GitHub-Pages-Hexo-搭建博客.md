@@ -7,6 +7,10 @@ tags:
 - Hexo
 ---
 
+关于如何使用GitHub Pages和Hexo搭建个人博客并进行写作（使用Keep主题）。
+
+<!--more-->
+
 # GitHub Pages & Hexo 搭建博客
 
 ## Hexo 安装与配置
@@ -18,45 +22,11 @@ tags:
 3. 在本地创建一个文件夹，然后往这个文件夹中安装Hexo
 4. 配置 Hexo，其配置文件为_config.yml：[配置 Hexo | Easy Hexo 👨‍💻](https://easyhexo.com/1-Hexo-install-and-config/1-3-config-hexo.html#配置-hexo-2)
 
-```
+```shell
  npm install -g hexo-cli # 安装Hexo
  mkdir mkdir <your_blog_name>  # 建立你的网站根目录，名字可以自己修改
  hexo init <your_blog_name> # 往这个文件夹中安装Hexo
 ```
-
-## Hexo的keep主题安装与配置
-
-> [Keep 主题使用指南 | Hexo 主题 Keep 官方文档](https://keep-docs.xpoet.cn/) && [XPoet's Blog](https://xpoet.cn/)
-
-Step 1: 安装Keep主题
-
-```
- cd <your_blog_name>
- npm install hexo-theme-keep
-```
-
-Step 2: 使用Keep主题：在 Hexo 配置文件`_config.yml` 中将 theme 设置为 keep。
-
-```
- theme: keep
-```
-
-Step 3：配置Keep主题：在<your_blog_name>文件夹下创建一个`_config.keep.yml`文件，参照文档进行配置：[base_info | Keep 主题使用指南](https://keep-docs.xpoet.cn/tutorial/configuration-guide/base_info.html)
-
-其他：
-
-- 可能用到的命令：
-
-	```
-	 npm install hexo-theme-keep # 安装 keep 主题
-	 npm install hexo-filter-mathjax # 安装显示数学公式的插件
-	 npm install hexo-generator-searchdb # 安装站内搜索插件
-	 hexo new page about # hexo创建页面命令，使用该命令创建about页面。
-	```
-
-- [数学公式 | Keep 主题使用指南](https://keep-docs.xpoet.cn/advanced/mathjax.html)：建议开启。
-
-- 配置时的图标文件可以放在`source/images`文件夹中。
 
 ## **使用GitHub Pages部署到GitHub**
 
@@ -90,20 +60,74 @@ git remote -v
 git push origin hexo:hexo # push到远程仓库的hexo分支
 ```
 
-## 其他
+# Keep主题安装与配置
 
-1. `hexo new <artical_name>`创建一篇新文章
+> [Keep 主题使用指南 | Hexo 主题 Keep 官方文档](https://keep-docs.xpoet.cn/) && [XPoet's Blog](https://xpoet.cn/)
 
-2. Gitalk设置：[comment | Keep 主题使用指南](https://keep-docs.xpoet.cn/tutorial/configuration-guide/comment.html#gitalk)
+Step 1: 安装Keep主题
 
-3. `/scaffolds/post.md`: 修改post模板，可以设置默认打开数学公式渲染等
+```shell
+ cd <your_blog_name>
+ npm install hexo-theme-keep
+```
 
-  ```yaml
-  title: {{ title }}
-  date: {{ date }}
-  mathjax: true
-  tags:
-  ```
+Step 2: 使用Keep主题：在 Hexo 配置文件`_config.yml` 中将 theme 设置为 keep。
+
+```
+ theme: keep
+```
+
+Step 3：配置Keep主题：在<your_blog_name>文件夹下创建一个`_config.keep.yml`文件，参照文档进行配置：[base_info | Keep 主题使用指南](https://keep-docs.xpoet.cn/tutorial/configuration-guide/base_info.html)
+
+其他：
+
+- 可能用到的命令：
+
+	```shell
+	 npm install hexo-theme-keep # 安装 keep 主题
+	 npm install hexo-filter-mathjax # 安装显示数学公式的插件
+	 npm install hexo-generator-searchdb # 安装站内搜索插件
+	 hexo new page about # hexo创建页面命令，使用该命令创建about页面。
+	```
+
+- [数学公式 | Keep 主题使用指南](https://keep-docs.xpoet.cn/advanced/mathjax.html)：建议开启。
+
+- 配置时的图标文件可以放在`source/images`文件夹中。
+
+- Gitalk设置：[comment | Keep 主题使用指南](https://keep-docs.xpoet.cn/tutorial/configuration-guide/comment.html#gitalk)
+
+## 默认博客模板
+
+在`scaffolds/post.md`中可以设置默认模板，比如默认打开公式渲染等。
+
+```yaml
+title: {{ title }}
+date: {{ date }}
+mathjax: true
+tags:
+```
+
+
+
+## 图片插入：结合Typora
+
+Step 1：修改`_config.yml`文件
+
+```yaml
+post_asset_folder: true # 将这个配置项改为true，这样hexo new “postname"时会创建一个同名文件夹
+marked:
+  prependRoot: true
+  postAsset: true
+```
+
+Step 2：安装插件
+
+```shell
+npm install hexo-asset-img --save
+npm install hexo-renderer-marked --save
+```
+
+Step 3: 设置Typora插入图片时路径：`${filename}`
 
 ## Hexo deploy失败？
 

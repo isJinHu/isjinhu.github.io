@@ -26,17 +26,17 @@ style:
 
   # Your blog website logo image
   # You can use local image, image external link or don't fill
-  logo: /images/happy.png
+  logo: ""
 
   # Favicon (You can use local image or image external link)
   favicon: /images/happy.png
 
   # Avatar (You can use local image or image external link)
-  avatar: /images/blogger.svg
+  avatar: /images/angelica.png
 
   # First screen style settings
   first_screen:
-    enable: false  # Option values: true | false
+    enable: true  # Option values: true | false
 
     # Set transparent background for header
     header_transparent: false  # Option values: true | false
@@ -46,7 +46,7 @@ style:
 
     # First screen description
     # You can use the "||" to begin a newline, maximum is two lines.
-    description: Keep writing and Keep loving.
+    description: "I hid from him, and under running laughter."
 
     # If enable hitokoto, first screen description is different every time when you enter the site
     hitokoto: false      # Option values: true | false
@@ -80,20 +80,20 @@ menu:
 # Docs: https://keep-docs.xpoet.cn/tutorial/configuration-guide/social_contact.html
 # ---------------------------------------------------------------------------------------
 social_contact:
-  enable: false      # Option values: true | false
+  enable: true      # Option values: true | false
   links:
     # Fill in your social platform links here, e.g. [ github: https://github.com/XPoet ]
     # If you want to click open the picture, you need to add a prefix "img |",
     # at the same time change your link to the image link.
     # e.g. [ weixin: img | https://x.com/images/wechat.png ] or [ weixin: img | ./images/wechat.png ]
-    github:          # GitHub
+    github:  https://github.com/isJinHu        # GitHub
     weixin:          # WeChat
     qq:              # QQ
     weibo:           # WeiBo
     zhihu:           # ZhiHu
     twitter:         # Twitter
     facebook:        # Facebook
-    email:           # Email
+    email:   isjinhu@foxmail.com        # Email
 
 # ---------------------------------------------------------------------------------------
 # Home page article block display settings
@@ -159,7 +159,7 @@ toc:
   enable: true      # Option values: true | false
 
   # Automatically add list number to toc
-  number: true      # Option values: true | false
+  number: false      # Option values: true | false
 
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
   expand_all: true  # Option values: true | false
@@ -319,9 +319,9 @@ footer:
 # Docs: https://keep-docs.xpoet.cn/tutorial/configuration-guide/inject.html
 # ---------------------------------------------------------------------------------------
 inject:
-  enable: false  # Option values: true | false
+  enable: true  # Option values: true | false
   css:
-    -
+    - /css/custom.css
     # e.g.
     # - /css/custom-1.css
     # - /css/custom-2.css
