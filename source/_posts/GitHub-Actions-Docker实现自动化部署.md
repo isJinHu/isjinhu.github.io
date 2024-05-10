@@ -19,11 +19,11 @@ tags:
 
 2. 在两份配置文件中分别自定义配置，例如：
 
-	![image-20240510125728800](C:\Users\Jin\workspace\isjinhu.github.io\source\images\GitHub-Actions-Docker实现自动化部署\image-20240510125728800.png)
+	![image-20240510125728800](GitHub-Actions-Docker实现自动化部署/image-20240510125728800.png)
 
 3. 在`application.yaml`文件中引用：
 
-	![image-20240510125831169](C:\Users\Jin\workspace\isjinhu.github.io\source\images\GitHub-Actions-Docker实现自动化部署\image-20240510125831169.png)
+	![image-20240510125831169](GitHub-Actions-Docker实现自动化部署/image-20240510125831169.png)
 
 4. 激活配置文件：
 
@@ -130,17 +130,17 @@ DockerHub记得先注册账号。如果Dockerhub上传的是私密镜像，记�
 
 在GitHub项目设置中添加yml文件中的secrets，位置如下：
 
-![image](C:\Users\Jin\Downloads\image.png)
+![image](GitHub-Actions-Docker实现自动化部署/image.png)
 
 ### 使用自己的服务器
 
 1. 添加Runner
 
-	![image-20240510131941282](C:\Users\Jin\workspace\isjinhu.github.io\source\images\GitHub-Actions-Docker实现自动化部署\image-20240510131941282.png)
+	![image-20240510131941282](GitHub-Actions-Docker实现自动化部署/image-20240510131941282.png)
 
 2. 选择服务器对应系统，按照所示步骤在服务器上执行即可：
 
-	![image-20240510132157947](C:\Users\Jin\workspace\isjinhu.github.io\source\images\GitHub-Actions-Docker实现自动化部署\image-20240510132157947.png)
+	![image-20240510132157947](GitHub-Actions-Docker实现自动化部署/image-20240510132157947.png)
 
 	其中，运行`config.sh`脚本记得使用非root用户，否则会报错。
 
