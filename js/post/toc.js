@@ -2,13 +2,12 @@
 
 function initTOC() {
   const pageContainer = document.querySelector('.page-container')
+  const postPageContainer = document.querySelector('.post-page-container')
   const pcTocContainer = document.querySelector('.pc-post-toc')
   const tabletTocContainer = document.querySelector('.tablet-post-toc')
 
   if (KEEP.utils.hasToc) {
-    KEEP.utils = {
-      ...KEEP.utils,
-
+    KEEP.utils.tocHelper = {
       pcTocNavSections: [],
 
       tabletTocNavSections: [],
@@ -46,13 +45,13 @@ function initTOC() {
             element.addEventListener('click', (event) => {
               event.preventDefault()
               let winScrollY = window.scrollY
-              winScrollY = winScrollY === 0 ? -20 : winScrollY
+              winScrollY = winScrollY <= 1 ? -19 : winScrollY
               const offset = target.getBoundingClientRect().top + winScrollY
               window.anime({
                 targets: document.scrollingElement,
                 duration: 500,
                 easing: 'linear',
-                scrollTop: offset - 10,
+                scrollTop: offset,
                 complete: () => {
                   history.pushState(null, document.title, element.href)
                   setTimeout(() => {
@@ -118,16 +117,17 @@ function initTOC() {
         }
       }
     }
-
-    KEEP.utils.handleShowWhenHasToc()
-    KEEP.utils.registerTocNav()
+    KEEP.utils.tocHelper.handleShowWhenHasToc()
+    KEEP.utils.tocHelper.registerTocNav()
   } else {
-    pcTocContainer && pageContainer.removeChild(pcTocContainer)
-    tabletTocContainer && pageContainer.removeChild(tabletTocContainer)
+    pcTocContainer && postPageContainer.removeChild(pcTocContainer)
+    if (tabletTocContainer) {
+      pageContainer.removeChild(document.querySelector('.tablet-post-toc-mask'))
+    }
   }
 }
 
-if (KEEP.theme_config.pjax.enable === true && KEEP.utils) {
+if (KEEP.theme_config?.pjax?.enable === true && KEEP.utils) {
   initTOC()
 } else {
   window.addEventListener('DOMContentLoaded', initTOC)

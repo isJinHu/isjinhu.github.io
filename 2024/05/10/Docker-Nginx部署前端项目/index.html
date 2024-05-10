@@ -19,10 +19,10 @@
     
         <link rel="shortcut icon" href="/images/happy.png">
     
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/font/css/fontawesome.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/font/css/regular.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/font/css/solid.min.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/font/css/brands.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/font/css/brands.min.css">
     
         
             
@@ -34,10 +34,10 @@
             
         
     
-    <script id="hexo-configurations">
-    let KEEP = window.KEEP || {}
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"isjinhu.github.io","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"style":{"primary_color":"","logo":"","favicon":"/images/happy.png","avatar":"/images/angelica.png","first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":"I hid from him, and under running laughter.","hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"isJinHu","github_admins":null,"repository":"isjinhu.github.io","client_id":"7beec2c37d75fa0938fe","client_secret":"9ddb60cd22736e89bb210fcdc037623e5ea20925","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false}},"post":{"author_label":{"enable":false,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"img_align":"center"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"version":"3.7.3"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"style":{"primary_color":"","logo":"","favicon":"/images/happy.png","avatar":"/images/angelica.png","first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"I hid from him, and under running laughter.","hitokoto":false,"header_transparent":true},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"isJinHu","github_admins":null,"repository":"isjinhu.github.io","client_id":"7beec2c37d75fa0938fe","client_secret":"9ddb60cd22736e89bb210fcdc037623e5ea20925","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false}},"post":{"author_label":{"enable":false,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null},"img_align":"center"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"version":"3.8.6"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -287,24 +287,29 @@ mjx-container[display="true"] + br {
 
         <div class="article-content-container border-box">
 
-            <div class="article-title">
-                <span class="title-hover-animation">Docker + Nginx部署前端项目</span>
-            </div>
-
             
-                <div class="article-header border-box">
-                    
-                        <div class="avatar-box border-box">
-                            <img src="/images/angelica.png">
-                        </div>
-                    
-                    <div class="info-box">
-                        <div class="author">
-                            <span class="name">Jin Hu</span>
-                            
-                        </div>
-                        <div class="meta-info border-box">
-                            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        Docker + Nginx部署前端项目
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/angelica.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Jin Hu</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
 
 <div class="article-meta-info-container border-box post">
     <div class="article-meta-info border-box">
@@ -320,13 +325,16 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc">2024-05-10 16:48:44</span>
+                <span class="pc" data-updated="Fri May 10 2024 17:18:57 GMT+0800">2024-05-10 17:18:57</span>
             </span>
         
 
         
             <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul>
+                <ul class="article-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/Docker/">Docker</a></li>
+                        
                     
                 </ul>
             </span>
@@ -335,7 +343,7 @@ mjx-container[display="true"] + br {
         
             <span class="article-tag meta-info-item border-box">
                 <i class="icon fas fa-tags"></i>&nbsp;
-                <ul>
+                <ul class="article-tag-ul">
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Docker/">Docker</a></li>
                         
@@ -346,6 +354,14 @@ mjx-container[display="true"] + br {
 
         
         
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>491 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item article-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+            </span>
         
         
             <span class="meta-info-item article-pv">
@@ -357,16 +373,15 @@ mjx-container[display="true"] + br {
     
 </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-            
-
-            <div class="article-content keep-markdown-body">
                 
 
-                <p>关于如何使用Docker + Nginx在Linux上部署前端 </p>
-<p><strong>后端部署</strong>可以查看：<a href="https://isjinhu.github.io/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">GitHub Actions &amp; Docker实现自动化部署 | Jin’s Blog (isjinhu.github.io)</a></p>
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p><strong>后端部署</strong>可以查看：<a href="https://isjinhu.github.io/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">GitHub Actions &amp; Docker实现自动化部署 | Jin’s Blog (isjinhu.github.io)</a></p>
 <span id="more"></span>
 
 <h1 id="Docker-Nginx部署前端项目"><a href="#Docker-Nginx部署前端项目" class="headerlink" title="Docker + Nginx部署前端项目"></a>Docker + Nginx部署前端项目</h1><p>此处省略Docker安装步骤。</p>
@@ -399,57 +414,91 @@ mjx-container[display="true"] + br {
 <h2 id="Step-7-运行镜像，其中-p指定对应的端口映射。"><a href="#Step-7-运行镜像，其中-p指定对应的端口映射。" class="headerlink" title="Step 7: 运行镜像，其中-p指定对应的端口映射。"></a><strong>Step 7</strong>: 运行镜像，其中-p指定对应的端口映射。</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run \                  </span><br><span class="line">-p 1000:80 \</span><br><span class="line">-p 1001:1001 \</span><br><span class="line">--name nginx \</span><br><span class="line">-v /home/ubuntu/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \</span><br><span class="line">-v /home/ubuntu/nginx/conf/conf.d:/etc/nginx/conf.d \</span><br><span class="line">-v /home/ubuntu/nginx/logs:/var/log/nginx \</span><br><span class="line">-v /home/ubuntu/nginx/html:/usr/share/nginx/html \</span><br><span class="line">-d nginx:latest</span><br></pre></td></tr></table></figure>
 
 
-            </div>
-
-            
-
-            
-                <ul class="post-tags-box">
-                    
-                        <li class="tag-item">
-                            <a href="/tags/Docker/"><i class="icon fas fa-hashtag"></i>Docker</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            
-
-            
-                <div class="article-nav">
-                    
-                    
-                        <div class="article-next">
-                            <a class="next"
-                               rel="next"
-                               href="/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/"
-                            >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item text-ellipsis">GitHub Actions &amp; Docker实现自动化部署</span>
-                                <span class="post-nav-item">下一篇</span>
-                            </span>
-                                <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                            </a>
-                        </div>
-                    
                 </div>
-            
 
-            
                 
 
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Docker/">Docker</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/"
+                                   title="GitHub Actions &amp; Docker实现自动化部署"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">GitHub Actions &amp; Docker实现自动化部署</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
 
 
 
 
 
-            
+
+                
+            </div>
         </div>
 
         
             <div class="pc-post-toc right-toc">
-                <div class="post-toc-wrap">
-    <div class="post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
         <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Nginx%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="nav-text">Docker + Nginx部署前端项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-%E6%8B%89%E5%8F%96Nginx%E9%95%9C%E5%83%8F"><span class="nav-text">Step 1: 拉取Nginx镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-%E5%88%9B%E5%BB%BA%E6%8C%82%E8%BD%BD%E7%9B%AE%E5%BD%95"><span class="nav-text">Step 2: 创建挂载目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E4%B8%8D%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-text">Step 3: 启动一个不挂载的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-%E6%8B%B7%E8%B4%9D%E5%AE%B9%E5%99%A8%E5%86%85%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="nav-text">Step 4: 拷贝容器内默认配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5-%E5%81%9C%E6%AD%A2%E3%80%81%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8"><span class="nav-text">Step 5:停止、删除容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-6-%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="nav-text">Step 6: 部署前端项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-7-%E8%BF%90%E8%A1%8C%E9%95%9C%E5%83%8F%EF%BC%8C%E5%85%B6%E4%B8%AD-p%E6%8C%87%E5%AE%9A%E5%AF%B9%E5%BA%94%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E3%80%82"><span class="nav-text">Step 7: 运行镜像，其中-p指定对应的端口映射。</span></a></li></ol></li></ol>
     </div>
 </div>
@@ -478,7 +527,7 @@ mjx-container[display="true"] + br {
             </div>
 
             <div class="theme-info info-item default">
-                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.7.3</a>
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
             </div>
 
             
@@ -488,17 +537,22 @@ mjx-container[display="true"] + br {
 
         <div class="count-item info-item default">
             
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">2.5k</span>
+                </span>
+            
 
             
                 <span class="count-box border-box uv">
-                    <span class="item-type border-box">访问人数</span>
+                    <span class="item-type border-box">访客数</span>
                     <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
                 </span>
             
 
             
                 <span class="count-box border-box pv">
-                    <span class="item-type border-box">总访问量</span>
+                    <span class="item-type border-box">访问量</span>
                     <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
                 </span>
             
@@ -531,8 +585,8 @@ mjx-container[display="true"] + br {
 
     <!-- side tools -->
     <div class="side-tools">
-        <div class="side-tools-container">
-    <ul class="side-tools-list">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
         <li class="tools-item tool-font-adjust-plus flex-center">
             <i class="fas fa-search-plus"></i>
         </li>
@@ -548,14 +602,12 @@ mjx-container[display="true"] + br {
         <!-- rss -->
         
 
-        
-
         <li class="tools-item tool-scroll-to-bottom flex-center">
             <i class="fas fa-arrow-down"></i>
         </li>
     </ul>
 
-    <ul class="exposed-tools-list">
+    <ul class="exposed-tools-list border-box">
         
             <li class="tools-item toggle-show-toc-tablet flex-center">
                 <i class="fas fa-list"></i>
@@ -568,12 +620,10 @@ mjx-container[display="true"] + br {
             <i class="fas fa-cog fa-spin"></i>
         </li>
 
-        
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
-        
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
     </ul>
 </div>
 
@@ -621,8 +671,8 @@ mjx-container[display="true"] + br {
     
         <div class="tablet-post-toc-mask">
             <div class="tablet-post-toc">
-                <div class="post-toc-wrap">
-    <div class="post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
         <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Nginx%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="nav-text">Docker + Nginx部署前端项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-%E6%8B%89%E5%8F%96Nginx%E9%95%9C%E5%83%8F"><span class="nav-text">Step 1: 拉取Nginx镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-%E5%88%9B%E5%BB%BA%E6%8C%82%E8%BD%BD%E7%9B%AE%E5%BD%95"><span class="nav-text">Step 2: 创建挂载目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E4%B8%8D%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-text">Step 3: 启动一个不挂载的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-%E6%8B%B7%E8%B4%9D%E5%AE%B9%E5%99%A8%E5%86%85%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="nav-text">Step 4: 拷贝容器内默认配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5-%E5%81%9C%E6%AD%A2%E3%80%81%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8"><span class="nav-text">Step 5:停止、删除容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-6-%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="nav-text">Step 6: 部署前端项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-7-%E8%BF%90%E8%A1%8C%E9%95%9C%E5%83%8F%EF%BC%8C%E5%85%B6%E4%B8%AD-p%E6%8C%87%E5%AE%9A%E5%AF%B9%E5%BA%94%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E3%80%82"><span class="nav-text">Step 7: 运行镜像，其中-p指定对应的端口映射。</span></a></li></ol></li></ol>
     </div>
 </div>
@@ -634,36 +684,56 @@ mjx-container[display="true"] + br {
 
 
 
-<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/dark-light-toggle.js"></script>
+<!-- common -->
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/dark-light-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/local-search.js"></script>
 
 
+<!-- code-block -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/code-block.js"></script>
 
 
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/local-search.js"></script>
+<!-- lazyload -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/lazyload.js"></script>
 
 
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/code-block.js"></script>
-
-
-
-
-<div class="post-scripts pjax">
+<div class="pjax">
     
-        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/post-helper.js"></script>
+        <!-- post-helper -->
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
         
-            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/libs/anime.min.js"></script>
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/post/toc.js"></script>
         
+
+        <!-- copyright-info -->
         
-            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/toc.js"></script>
+
+        <!-- share -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/post/share.js"></script>
         
     
+
+    <!-- category-page -->
     
+
+    <!-- links-page -->
     
 </div>
 
+<!-- mermaid -->
 
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/libs/pjax.min.js"></script>
+
+<!-- pjax -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/libs/pjax.min.js"></script>
 <script>
     window.addEventListener('DOMContentLoaded', () => {
         window.pjax = new Pjax({
@@ -679,17 +749,16 @@ mjx-container[display="true"] + br {
             analytics: false,
             currentUrlFullReload: false,
             scrollRestoration: false,
-            // scrollTo: true,
         });
 
         document.addEventListener('pjax:send', () => {
-            KEEP.utils.pjaxProgressBarStart();
+            KEEP.utils.pjaxProgressBarStart()
         });
 
         document.addEventListener('pjax:complete', () => {
-            KEEP.utils.pjaxProgressBarEnd();
-            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
-            KEEP.refresh();
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
         });
     });
 </script>
