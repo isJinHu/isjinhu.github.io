@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Jin Hu">
+    
+    <title>
+        
+            GitHub Actions &amp; Docker实现自动化部署 |
+        
+        Jin&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/happy.png">
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/font/css/brands.min.css">
+    
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"isjinhu.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"style":{"primary_color":"","logo":"/images/happy.png","favicon":"/images/happy.png","avatar":"/images/blogger.svg","first_screen":{"enable":false,"header_transparent":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":false},"comment":{"enable":false,"use":"gitalk","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":"isJinHu","github_admins":null,"repository":"isjinhu.github.io","client_id":"7beec2c37d75fa0938fe","client_secret":"9ddb60cd22736e89bb210fcdc037623e5ea20925","proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false}},"post":{"author_label":{"enable":false,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"img_align":"center"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"version":"3.7.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/happy.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Jin&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            <div class="article-title">
+                <span class="title-hover-animation">GitHub Actions &amp; Docker实现自动化部署</span>
+            </div>
+
+            
+                <div class="article-header border-box">
+                    
+                        <div class="avatar-box border-box">
+                            <img src="/images/blogger.svg">
+                        </div>
+                    
+                    <div class="info-box">
+                        <div class="author">
+                            <span class="name">Jin Hu</span>
+                            
+                        </div>
+                        <div class="meta-info border-box">
+                            
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2024-05-10 12:49:38</span>
+                <span class="mobile">2024-05-10 12:49</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc">2024-05-10 13:47:40</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Docker/">Docker</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/GitHub/">GitHub</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <blockquote>
+<p>教程：<a class="link" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1aT421y7Ar/">GitHub Actions工作流自动化的入门核心_哔哩哔哩_bilibili<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h1 id="GitHub-Actions-Docker实现自动化部署"><a href="#GitHub-Actions-Docker实现自动化部署" class="headerlink" title="GitHub Actions + Docker实现自动化部署"></a>GitHub Actions + Docker实现自动化部署</h1><h2 id="SpringBoot多环境切换"><a href="#SpringBoot多环境切换" class="headerlink" title="SpringBoot多环境切换"></a>SpringBoot多环境切换</h2><blockquote>
+<p><strong>参考</strong>: <a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44885775/article/details/123471021">31 SpringBoot多环境的切换(生产环境、开发环境、测试环境)_spring boot生产和开发环境-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<ol>
+<li><p>在<code>resources/</code>下创建<code>application-dev.yaml</code>和<code>application-prouct.yaml</code>文件，分别表示开发环境和生产环境。</p>
+</li>
+<li><p>在两份配置文件中分别自定义配置，例如：</p>
+<p> <img src="C:\Users\Jin\workspace\isjinhu.github.io\source\images\GitHub-Actions-Docker实现自动化部署\image-20240510125728800.png" alt="image-20240510125728800"></p>
+</li>
+<li><p>在<code>application.yaml</code>文件中引用：</p>
+<p> <img src="C:\Users\Jin\workspace\isjinhu.github.io\source\images\GitHub-Actions-Docker实现自动化部署\image-20240510125831169.png" alt="image-20240510125831169"></p>
+</li>
+<li><p>激活配置文件：</p>
+<ol>
+<li>配置文件：在配置文件中指定<code>spring.profiles.active=dev</code></li>
+<li>虚拟机参数：在VM options指定 <code>-Dspring.profiles.active=dev</code></li>
+<li>命令行参数：<code>java -jar xxx.jar –spring.profiles.active=dev</code></li>
+</ol>
+</li>
+</ol>
+<p>IDEA中使用第二种即可，部署时使用命令行参数指定。</p>
+<h2 id="Dockerfile文件编写"><a href="#Dockerfile文件编写" class="headerlink" title="Dockerfile文件编写"></a>Dockerfile文件编写</h2><p>在项目根目录下，新建<code>Dockerfile</code>，内容如下：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> fabric8/java-alpine-openjdk11-jre</span><br><span class="line"><span class="keyword">ENV</span> TZ=Asia/Shanghai</span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">rm</span> -f /etc/localtime \</span></span><br><span class="line"><span class="language-bash">&amp;&amp; <span class="built_in">ln</span> -sv /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span></span><br><span class="line"><span class="language-bash">&amp;&amp; <span class="built_in">echo</span> <span class="string">"Asia/Shanghai"</span> &gt; /etc/timezone</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> target/*.jar /app.jar</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">"java"</span>,<span class="string">"-jar"</span>,<span class="string">"/app.jar"</span>, <span class="string">"--spring.profiles.active=product"</span>]</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：最后一行指定了配置文件。</p>
+<h2 id="workflow文件编写"><a href="#workflow文件编写" class="headerlink" title="workflow文件编写"></a>workflow文件编写</h2><p>以下两种方式二选一即可。</p>
+<h3 id="使用GitHub提供的Ubuntu环境"><a href="#使用GitHub提供的Ubuntu环境" class="headerlink" title="使用GitHub提供的Ubuntu环境"></a>使用GitHub提供的Ubuntu环境</h3><p>在项目根目录下，新建<code>./github/workflows/delpoy.yml</code>文件，内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用Github Actions自动部署Spring Boot项目到服务器</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">With</span> <span class="string">Docker</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span> [ <span class="string">master</span> ]</span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Build工作</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span> <span class="comment"># 使用GitHub提供的Ubuntu环境</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">读取仓库内容</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v4</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">设置Java环境</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-java@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">java-version:</span> <span class="number">11</span></span><br><span class="line">          <span class="attr">distribution:</span> <span class="string">'adopt'</span></span><br><span class="line">          <span class="attr">cache:</span> <span class="string">'maven'</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">#      - name: 缓存Maven依赖</span></span><br><span class="line">      <span class="comment">#        uses: actions/cache@v3</span></span><br><span class="line">      <span class="comment">#        with:</span></span><br><span class="line">      <span class="comment">#          path: ~/.m2/repository</span></span><br><span class="line">      <span class="comment">#          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}</span></span><br><span class="line">      <span class="comment">#          restore-keys: |</span></span><br><span class="line">      <span class="comment">#            ${{ runner.os }}-maven-</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">编译打包</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">mvn</span> <span class="string">package</span> <span class="string">-Dmaven.test.skip=true</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">登录到DockerHub</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">docker/login-action@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">username:</span> <span class="string">${{</span> <span class="string">secrets.DOCKER_USERNAME</span> <span class="string">}}</span></span><br><span class="line">          <span class="attr">password:</span> <span class="string">${{</span> <span class="string">secrets.DOCKER_PASSWORD</span> <span class="string">}}</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">构建Docker镜像</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">docker/build-push-action@v5</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">context:</span> <span class="string">.</span></span><br><span class="line">          <span class="attr">file:</span> <span class="string">./Dockerfile</span></span><br><span class="line">          <span class="attr">push:</span> <span class="literal">true</span></span><br><span class="line">          <span class="attr">tags:</span> <span class="string">${{</span> <span class="string">secrets.DOCKER_USERNAME</span> <span class="string">}}/project-name:latest</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">部署到服务器</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">appleboy/ssh-action@master</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">host:</span> <span class="string">${{</span> <span class="string">secrets.SERVER_HOST</span> <span class="string">}}</span></span><br><span class="line">          <span class="attr">username:</span> <span class="string">${{</span> <span class="string">secrets.SERVER_USERNAME</span> <span class="string">}}</span></span><br><span class="line">          <span class="attr">port:</span> <span class="string">${{</span> <span class="string">secrets.SERVER_PORT</span> <span class="string">}}</span></span><br><span class="line">          <span class="attr">password:</span> <span class="string">${{</span> <span class="string">secrets.SERVER_PASSWORD</span> <span class="string">}}</span></span><br><span class="line">          <span class="attr">script:</span> <span class="string">|</span></span><br><span class="line">            <span class="string">sh</span> <span class="string">/path/to/delpoy.sh</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>project-name记得替换为自己的项目名称</strong></p>
+<p>其中<code>deploy.sh</code>脚本内容如下（记得替换<code>{{}}</code>中内容，<strong>端口记得按需修改</strong>）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker pull {{username}}/{{project-name}}:latest</span><br><span class="line">docker tag docker.io/{{username}}/{[project-name]}:latest {{project-name}}:latest</span><br><span class="line">docker rm -f {{project-name}}</span><br><span class="line">docker run --name {{project-name}} -p 1002:8081 -d {{project-name}}:latest</span><br><span class="line">docker image prune -af</span><br></pre></td></tr></table></figure>
+
+<p>DockerHub记得先注册账号。如果Dockerhub上传的是私密镜像，记得在服务器登录账号：<code>docker login</code></p>
+<p>在GitHub项目设置中添加yml文件中的secrets，位置如下：</p>
+<p><img src="C:\Users\Jin\Downloads\image.png" alt="image"></p>
+<h3 id="使用自己的服务器"><a href="#使用自己的服务器" class="headerlink" title="使用自己的服务器"></a>使用自己的服务器</h3><ol>
+<li><p>添加Runner</p>
+<p> <img src="C:\Users\Jin\workspace\isjinhu.github.io\source\images\GitHub-Actions-Docker实现自动化部署\image-20240510131941282.png" alt="image-20240510131941282"></p>
+</li>
+<li><p>选择服务器对应系统，按照所示步骤在服务器上执行即可：</p>
+<p> <img src="C:\Users\Jin\workspace\isjinhu.github.io\source\images\GitHub-Actions-Docker实现自动化部署\image-20240510132157947.png" alt="image-20240510132157947"></p>
+<p> 其中，运行<code>config.sh</code>脚本记得使用非root用户，否则会报错。</p>
+<p> 其次<code>./run.sh</code>命令改为<code>nohup ./run.sh &amp;</code>在后台不挂断运行。</p>
+<ol start="3">
+<li><p>在服务器记得安装maven和Java</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install maven</span><br><span class="line">mvn --version # 验证是否安装成功</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>参考</strong>：<a class="link" target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1649751">如何在 Ubuntu 20.04 上安装 Apache Maven-腾讯云开发者社区-腾讯云<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+</li>
+<li><p>在项目创建workflow文件，内容如下：</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">With</span> <span class="string">Runner</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span> [ <span class="string">master</span> ]</span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Build工作</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">self-hosted</span> <span class="comment"># 使用自己的服务器</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">读取仓库内容</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v4</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">设置Java环境</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          pwd</span></span><br><span class="line"><span class="string">          java --version</span></span><br><span class="line"><span class="string">          mvn --version</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">编译打包</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">mvn</span> <span class="string">package</span> <span class="string">-Dmaven.test.skip=true</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">构建Docker镜像</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          docker build -f Dockerfile -t {{project-name}}:latest .</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">部署到服务器</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          docker rm -f {{project-name}</span></span><br><span class="line"><span class="string">          docker run -d --name {{project-name}} -p 1002:8080 {{project-name}}:latest</span></span><br><span class="line"><span class="string">          docker ps</span></span><br></pre></td></tr></table></figure>
+
+<p> <strong>端口记得按需修改</strong></p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="开始自动化部署"><a href="#开始自动化部署" class="headerlink" title="开始自动化部署"></a>开始自动化部署</h2><p>将代码提交到GitHub后，在GitHub的Actions就会发现正在自动化部署。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a class="link" target="_blank" rel="noopener" href="https://juejin.cn/post/7011669659032387591#heading-1">使用Github Actions + Docker 部署Spring Boot应用 - 掘金<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link" target="_blank" rel="noopener" href="https://blog.51cto.com/u_14725510/7969896">Github Actions实现Spring Boot自动化部署（第二弹）_JavaGPT的技术博客_51CTO博客<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Docker/"><i class="icon fas fa-hashtag"></i>Docker</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/GitHub/"><i class="icon fas fa-hashtag"></i>GitHub</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2024/05/10/Docker-Nginx%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item text-ellipsis">Docker + Nginx部署前端项目</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2024/01/30/Spring%EF%BC%9AIoC-DI-%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item text-ellipsis">Spring：IoC&amp;DI 控制反转和依赖注入</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+                
+
+
+
+
+
+
+            
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="nav-number">1.</span> <span class="nav-text">GitHub Actions + Docker实现自动化部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringBoot%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">SpringBoot多环境切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99"><span class="nav-number">1.2.</span> <span class="nav-text">Dockerfile文件编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#workflow%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99"><span class="nav-number">1.3.</span> <span class="nav-text">workflow文件编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8GitHub%E6%8F%90%E4%BE%9B%E7%9A%84Ubuntu%E7%8E%AF%E5%A2%83"><span class="nav-number">1.3.1.</span> <span class="nav-text">使用GitHub提供的Ubuntu环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.3.2.</span> <span class="nav-text">使用自己的服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="nav-number">1.4.</span> <span class="nav-text">开始自动化部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.5.</span> <span class="nav-text">参考</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Jin Hu</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.7.3</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访问人数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">总访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="nav-number">1.</span> <span class="nav-text">GitHub Actions + Docker实现自动化部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringBoot%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%88%87%E6%8D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">SpringBoot多环境切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerfile%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99"><span class="nav-number">1.2.</span> <span class="nav-text">Dockerfile文件编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#workflow%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99"><span class="nav-number">1.3.</span> <span class="nav-text">workflow文件编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8GitHub%E6%8F%90%E4%BE%9B%E7%9A%84Ubuntu%E7%8E%AF%E5%A2%83"><span class="nav-number">1.3.1.</span> <span class="nav-text">使用GitHub提供的Ubuntu环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.3.2.</span> <span class="nav-text">使用自己的服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="nav-number">1.4.</span> <span class="nav-text">开始自动化部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.5.</span> <span class="nav-text">参考</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/code-block.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/toc.js"></script>
+        
+    
+    
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.7.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
