@@ -242,7 +242,7 @@ comment:
   # See: https://github.com/walinejs/waline
   #      https://waline.js.org/guide/get-started.html
   waline:
-    server_url: https://blog-comment-hgmyz83xp-isjinhus-projects.vercel.app    # Server URL
+    server_url: https://blog-comment-three.vercel.app    # Server URL
     reaction: true # Article reactions, Option values: true | false
     version: 2      # Waline version, default use v2
 
