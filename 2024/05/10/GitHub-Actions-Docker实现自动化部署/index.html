@@ -314,7 +314,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc">2024-05-10 13:47:40</span>
+                <span class="pc">2024-05-10 14:22:40</span>
             </span>
         
 
@@ -331,10 +331,10 @@ mjx-container[display="true"] + br {
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul>
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Docker/">Docker</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/GitHub/">GitHub</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/GitHub/">GitHub</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Docker/">Docker</a></li>
                         
                     
                 </ul>
@@ -372,10 +372,10 @@ mjx-container[display="true"] + br {
 <li><p>在<code>resources/</code>下创建<code>application-dev.yaml</code>和<code>application-prouct.yaml</code>文件，分别表示开发环境和生产环境。</p>
 </li>
 <li><p>在两份配置文件中分别自定义配置，例如：</p>
-<p> <img src="C:\Users\Jin\workspace\isjinhu.github.io\source\images\GitHub-Actions-Docker实现自动化部署\image-20240510125728800.png" alt="image-20240510125728800"></p>
+ <img src="/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/image-20240510125728800.png" class="" title="image-20240510125728800">
 </li>
 <li><p>在<code>application.yaml</code>文件中引用：</p>
-<p> <img src="C:\Users\Jin\workspace\isjinhu.github.io\source\images\GitHub-Actions-Docker实现自动化部署\image-20240510125831169.png" alt="image-20240510125831169"></p>
+ <img src="/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/image-20240510125831169.png" class="" title="image-20240510125831169">
 </li>
 <li><p>激活配置文件：</p>
 <ol>
@@ -400,13 +400,15 @@ mjx-container[display="true"] + br {
 
 <p>DockerHub记得先注册账号。如果Dockerhub上传的是私密镜像，记得在服务器登录账号：<code>docker login</code></p>
 <p>在GitHub项目设置中添加yml文件中的secrets，位置如下：</p>
-<p><img src="C:\Users\Jin\Downloads\image.png" alt="image"></p>
+<img src="/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/image.png" class="" title="image">
+
 <h3 id="使用自己的服务器"><a href="#使用自己的服务器" class="headerlink" title="使用自己的服务器"></a>使用自己的服务器</h3><ol>
 <li><p>添加Runner</p>
-<p> <img src="C:\Users\Jin\workspace\isjinhu.github.io\source\images\GitHub-Actions-Docker实现自动化部署\image-20240510131941282.png" alt="image-20240510131941282"></p>
+ <img src="/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/image-20240510131941282.png" class="" title="image-20240510131941282">
 </li>
 <li><p>选择服务器对应系统，按照所示步骤在服务器上执行即可：</p>
-<p> <img src="C:\Users\Jin\workspace\isjinhu.github.io\source\images\GitHub-Actions-Docker实现自动化部署\image-20240510132157947.png" alt="image-20240510132157947"></p>
+ <img src="/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/image-20240510132157947.png" class="" title="image-20240510132157947">
+
 <p> 其中，运行<code>config.sh</code>脚本记得使用非root用户，否则会报错。</p>
 <p> 其次<code>./run.sh</code>命令改为<code>nohup ./run.sh &amp;</code>在后台不挂断运行。</p>
 <ol start="3">
@@ -439,11 +441,11 @@ mjx-container[display="true"] + br {
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/Docker/"><i class="icon fas fa-hashtag"></i>Docker</a>&nbsp;
+                            <a href="/tags/GitHub/"><i class="icon fas fa-hashtag"></i>GitHub</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/GitHub/"><i class="icon fas fa-hashtag"></i>GitHub</a>&nbsp;
+                            <a href="/tags/Docker/"><i class="icon fas fa-hashtag"></i>Docker</a>&nbsp;
                         </li>
                     
                 </ul>
