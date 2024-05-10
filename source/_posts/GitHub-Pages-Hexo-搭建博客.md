@@ -62,7 +62,7 @@ git push origin hexo:hexo # push到远程仓库的hexo分支
 
 # Keep主题安装与配置
 
-> [Keep 主题使用指南 | Hexo 主题 Keep 官方文档](https://keep-docs.xpoet.cn/) && [XPoet's Blog](https://xpoet.cn/)
+> [home_article | Keep 主题使用手册](https://v3.keep-docs.xpoet.cn/basis/configuration-guide/home_article.html) && [XPoet's Blog](https://xpoet.cn/)
 
 Step 1: 安装Keep主题
 
@@ -83,12 +83,13 @@ Step 3：配置Keep主题：在<your_blog_name>文件夹下创建一个`_config.
 
 - 可能用到的命令：
 
-	```shell
-	 npm install hexo-theme-keep # 安装 keep 主题
-	 npm install hexo-filter-mathjax # 安装显示数学公式的插件
-	 npm install hexo-generator-searchdb # 安装站内搜索插件
-	 hexo new page about # hexo创建页面命令，使用该命令创建about页面。
-	```
+  ```shell
+   npm install hexo-theme-keep # 安装 keep 主题
+   npm install hexo-filter-mathjax # 安装显示数学公式的插件
+   npm install hexo-generator-searchdb # 安装站内搜索插件
+   npm install hexo-wordcount # 安装统计字数插件
+   hexo new page about # hexo创建页面命令，使用该命令创建about页面。
+  ```
 
 - [数学公式 | Keep 主题使用指南](https://keep-docs.xpoet.cn/advanced/mathjax.html)：建议开启。
 

@@ -2,11 +2,11 @@
 title: Docker + Nginx部署前端项目
 mathjax: true
 date: 2024-05-10 13:48:07
+categories:
+- Docker
 tags:
 - Docker
 ---
-
-关于如何使用Docker + Nginx在Linux上部署前端 
 
 **后端部署**可以查看：[GitHub Actions & Docker实现自动化部署 | Jin's Blog (isjinhu.github.io)](https://isjinhu.github.io/2024/05/10/GitHub-Actions-Docker实现自动化部署/)
 

@@ -39,7 +39,7 @@ style:
     enable: true  # Option values: true | false
 
     # Set transparent background for header
-    header_transparent: false  # Option values: true | false
+    header_transparent: true  # Option values: true | false
 
     # First screen background image (You can use local image or image external link)
     background_img: /images/bg.svg
@@ -139,6 +139,15 @@ post:
 
   # Post copyright info
   copyright_info: false  # Option values: true | false
+
+  # Post share
+  share: true           # Option values: true | false
+
+  # Reward author
+  reward:
+    enable: false        # Option values: true | false
+    img_link:            # Image link for the payment QR code
+    text:                # Custom reward text, Can be null
 
 # ---------------------------------------------------------------------------------------
 # Code block
@@ -262,7 +271,7 @@ rss:
 # Docs: https://keep-docs.xpoet.cn/tutorial/configuration-guide/lazyload.html
 # ---------------------------------------------------------------------------------------
 lazyload:
-  enable: false  # Option values: true | false
+  enable: true  # Option values: true | false
 
 # ---------------------------------------------------------------------------------------
 # CDN
