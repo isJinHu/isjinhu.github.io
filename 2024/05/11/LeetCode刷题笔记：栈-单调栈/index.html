@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Jin Hu">
+    
+    <title>
+        
+            LeetCode刷题笔记：栈&amp;单调栈&amp;单调队列 |
+        
+        Jin&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/happy.png">
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/font/css/brands.min.css">
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"isjinhu.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"style":{"primary_color":"","logo":"","favicon":"/images/happy.png","avatar":"/images/angelica.png","first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"I hid from him, and under running laughter.","hitokoto":false,"header_transparent":true},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":"https://blog-comment-three.vercel.app","reaction":true,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false}},"post":{"author_label":{"enable":false,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null},"img_align":"center"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"version":"3.8.6"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container border-box">
+
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+            <a class="site-name border-box" href="/">
+               Jin&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+
+                
+
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+
+        <div class="article-content-container border-box">
+
+            
+
+            <div class="article-content-bottom border-box">
+                
+                    <div class="article-title">
+                        LeetCode刷题笔记：栈&amp;单调栈&amp;单调队列
+                    </div>
+                
+
+                
+                    <div class="article-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/angelica.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author">
+                                <span class="name">Jin Hu</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
+
+
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2024-05-11 14:10:04</span>
+                <span class="mobile">2024-05-11 14:10</span>
+            </span>
+
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Sat May 11 2024 23:19:50 GMT+0800">2024-05-11 23:19:50</span>
+            </span>
+        
+
+        
+
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul class="article-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/LeetCode/">LeetCode</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%AE%97%E6%B3%95/">算法</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item article-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.6k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item article-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>6 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item article-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="article-content keep-markdown-body">
+                    
+
+                    <p>栈是一种「先进后出」的数据结构。<strong>单调栈</strong>是一种特殊的栈，在满足「先进后出」规则基础上，同时满足「从栈底到栈顶的元素单调递增/减」，因此也分为单调递增栈，单调递减栈。</p>
+<p>单调栈用来解决<strong>下一个更大/小元素</strong>、<strong>上一个更大/小元素</strong>这一类的典型问题。比如<a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures/description/?envType=study-plan-v2&envId=top-100-liked">739. 每日温度<i class="fas fa-external-link-alt"></i></a>，<a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-rectangle-in-histogram/?envType=study-plan-v2&envId=top-100-liked">84. 柱状图中最大的矩形<i class="fas fa-external-link-alt"></i></a>，<a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water/description/?envType=study-plan-v2&envId=top-100-liked">42. 接雨水<i class="fas fa-external-link-alt"></i></a>都是这类问题。</p>
+<p>队列是一种「先进先出」的数据结构。<strong>单调队列</strong>是一种特殊的队列，在满足「先进先出」规则基础上，同时满足「从队首到队尾的元素单调递增/减」。</p>
+<p>单调队列用来解决<strong>滑动窗口内的最大/小值</strong>、<strong>中位数的动态查询</strong>这一类问题。比如<a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/description/?envType=study-plan-v2&envId=top-100-liked">239. 滑动窗口最大值<i class="fas fa-external-link-alt"></i></a>。</p>
+<span id="more"></span>
+
+<h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h1><p>这里以单调递减栈为例，可以解决求下一个更大元素问题。</p>
+<p>单调递减栈的思想是：只有比栈顶元素小的元素才能直接进栈，否则需要将栈中更小的元素出栈。这样，当元素出栈时，就找到了下一个更大元素。</p>
+<h2 id="739-每日温度-中等"><a href="#739-每日温度-中等" class="headerlink" title="739. 每日温度 - 中等"></a>739. 每日温度 - 中等</h2><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures/description/?envType=study-plan-v2&envId=top-100-liked">739. 每日温度<i class="fas fa-external-link-alt"></i></a>：给定一个表示每日温度的整数数组，求对于每天在第几天后温度会比这天更高，如果没有，填0。</p>
+<blockquote>
+<p>输入: temperatures = [73,74,75,71,69,72,76,73]</p>
+<p>输出: [1,1,4,2,1,1,0,0]</p>
+</blockquote>
+<p>思路：求的是下一个更大元素的索引距离，用单调递减栈，栈中记录的实际上是还没算出「下一个更大元素」的数字下标。</p>
+<p>时间复杂度：O(n)，每个元素只进出栈一次。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] dailyTemperatures(<span class="type">int</span>[] temperatures) {</span><br><span class="line">        <span class="type">int</span> length=temperatures.length;</span><br><span class="line">        <span class="type">int</span>[] res=<span class="keyword">new</span> <span class="title class_">int</span>[length];</span><br><span class="line">        Deque&lt;Integer&gt; stack=<span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;(); <span class="comment">// 单调栈</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;length;i++){</span><br><span class="line">            <span class="keyword">while</span>(!stack.isEmpty()&amp;&amp;temperatures[i]&gt;temperatures[stack.peekLast()]){</span><br><span class="line">                <span class="type">int</span> j=stack.pollLast();</span><br><span class="line">                res[j]=i-j;</span><br><span class="line">            }</span><br><span class="line">            stack.offerLast(i);</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// while(!stack.isEmpty()){</span></span><br><span class="line">        <span class="comment">//     res[stack.pollLast()]=0;</span></span><br><span class="line">        <span class="comment">// }</span></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="84-柱状图中最大的矩形-困难"><a href="#84-柱状图中最大的矩形-困难" class="headerlink" title="84. 柱状图中最大的矩形 - 困难"></a>84. 柱状图中最大的矩形 - 困难</h2><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-rectangle-in-histogram/description/?envType=study-plan-v2&envId=top-100-liked">84. 柱状图中最大的矩形<i class="fas fa-external-link-alt"></i></a>：给定柱状图中每个柱子高度，求能勾勒出的矩形最大面积。</p>
+<img lazyload="" alt="image" data-src="/2024/05/11/LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%A0%88-%E5%8D%95%E8%B0%83%E6%A0%88/image-20240511145906164.png" class="" title="image-20240511145906164">
+
+<blockquote>
+<p>输入：heights = [2,1,5,6,2,3]</p>
+<p>输出：10</p>
+<p>解释：最大的矩形为图中红色区域，面积为 10</p>
+</blockquote>
+<p>思路1：想要以某个柱子为高，那么必须知道这个柱子左右侧更矮柱子的下标，即要求更小元素下标。因此用2个单调递增栈，分别求上/下一个更小元素并保存，最后在遍历求面积即可。</p>
+<p>思路2：计算右侧更矮柱子的下标时，单调栈用于维护没有找到右侧更矮柱子的柱子索引，当某个元素出栈时，说明这个元素找到右侧更矮柱子，同时新的栈顶元素（如果存在）一定是当前出栈柱子左侧更矮的柱子。（因为如果左侧有更高的柱子，都已经出栈，而更矮的柱子会留在里面）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">largestRectangleArea</span><span class="params">(<span class="type">int</span>[] heights)</span> {</span><br><span class="line">        Deque&lt;Integer&gt; stack=<span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;heights.length;i++){</span><br><span class="line">            <span class="keyword">while</span>(!stack.isEmpty()&amp;&amp;heights[i]&lt;heights[stack.peekLast()]){</span><br><span class="line">                <span class="type">int</span> curHeight=heights[stack.pollLast()];</span><br><span class="line">                <span class="type">int</span> leftIdx=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">if</span>(!stack.isEmpty()){</span><br><span class="line">                    leftIdx=stack.peekLast()+<span class="number">1</span>;</span><br><span class="line">                }</span><br><span class="line">                <span class="type">int</span> area=curHeight*(i-leftIdx);</span><br><span class="line">                res=Math.max(res,area);</span><br><span class="line">            }</span><br><span class="line">            stack.offerLast(i);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty()){</span><br><span class="line">            <span class="type">int</span> curHeight=heights[stack.pollLast()];</span><br><span class="line">            <span class="type">int</span> leftIdx=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(!stack.isEmpty()){</span><br><span class="line">                leftIdx=stack.peekLast()+<span class="number">1</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="type">int</span> area=curHeight*(heights.length-leftIdx);</span><br><span class="line">            res=Math.max(res,area);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="42-接雨水-困难"><a href="#42-接雨水-困难" class="headerlink" title="42. 接雨水 - 困难"></a>42. 接雨水 - 困难</h2><h3 id="单调栈做法"><a href="#单调栈做法" class="headerlink" title="单调栈做法"></a>单调栈做法</h3><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water/description/?envType=study-plan-v2&envId=top-100-liked">42. 接雨水<i class="fas fa-external-link-alt"></i></a></p>
+<img lazyload="" alt="image" data-src="/2024/05/11/LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%A0%88-%E5%8D%95%E8%B0%83%E6%A0%88/image-20240511193851026.png" class="" title="image-20240511193851026">
+
+<p>思路：当我们找到右侧第一个比某个位置大的元素时，这里就能接水，相当于横着计算。</p>
+<img lazyload="" alt="image" data-src="/2024/05/11/LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%A0%88-%E5%8D%95%E8%B0%83%E6%A0%88/20210223092629946.png" class="" title="42.接雨水2">
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">trap</span><span class="params">(<span class="type">int</span>[] height)</span> {</span><br><span class="line">        <span class="comment">// 单调栈做法</span></span><br><span class="line">        Deque&lt;Integer&gt; stack=<span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;height.length;i++){</span><br><span class="line">            <span class="keyword">while</span>(!stack.isEmpty()&amp;&amp;height[stack.peekLast()]&lt;=height[i]){</span><br><span class="line">                <span class="type">int</span> curHeight=height[stack.pollLast()];</span><br><span class="line">                <span class="keyword">if</span>(stack.isEmpty()) <span class="keyword">break</span>;</span><br><span class="line">                <span class="type">int</span> left=stack.peekLast();</span><br><span class="line">                <span class="type">int</span> h=Math.min(height[left], height[i])-curHeight;</span><br><span class="line">                res+=h*(i-left-<span class="number">1</span>);</span><br><span class="line">            }</span><br><span class="line">            stack.offerLast(i);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="双指针做法"><a href="#双指针做法" class="headerlink" title="双指针做法"></a>双指针做法</h3><p>思路：</p>
+<ul>
+<li>某个位置能接的水=min(左边柱子的最高高度，记录右边柱子的最高高度) - 当前柱子高度。</li>
+<li>使用相向双指针遍历分别记录左右两侧当前最大值，其中较小的那个就是公式用到的那个。</li>
+</ul>
+<p>时间复杂度：O(n)，空间复杂度：O(1)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">trap</span><span class="params">(<span class="type">int</span>[] height)</span>{</span><br><span class="line">        <span class="comment">// 双指针做法: min{lMax, rMax}-h[i], lMax=max{0,...,i}</span></span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> left=<span class="number">0</span>, right=height.length-<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> lMax=height[<span class="number">0</span>], rMax=height[right];</span><br><span class="line">        <span class="keyword">while</span>(left&lt;=right){</span><br><span class="line">            <span class="keyword">if</span>(lMax&lt;rMax){</span><br><span class="line">                lMax=Math.max(lMax, height[left]);</span><br><span class="line">                res+=lMax-height[left++];</span><br><span class="line">            }<span class="keyword">else</span>{</span><br><span class="line">                rMax=Math.max(rMax, height[right]);</span><br><span class="line">                res+=rMax-height[right--];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="单调队列"><a href="#单调队列" class="headerlink" title="单调队列"></a>单调队列</h1><p>单调队列的思想是：只有当一个元素是最值或者可能成为最值时才保留，否则出队。这样，每次移动窗口时，队首就是当前窗口最值。</p>
+<h2 id="239-滑动窗口最大值-困难"><a href="#239-滑动窗口最大值-困难" class="headerlink" title="239. 滑动窗口最大值 - 困难"></a>239. 滑动窗口最大值 - 困难</h2><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/description/?envType=study-plan-v2&envId=top-100-liked">239. 滑动窗口最大值<i class="fas fa-external-link-alt"></i></a></p>
+<img lazyload="" alt="image" data-src="/2024/05/11/LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%A0%88-%E5%8D%95%E8%B0%83%E6%A0%88/image-20240511224949472.png" class="" title="image-20240511224949472">
+
+<p>思路：对于窗口[1 3 -1]，其中3是最大值，3之前的数字1比3小且更早离开，所以无论窗口如何移动都不会成为最大值，3之后的数字-1比3小但更晚离开，因此可能成为最大值。每次移动时，需要判断队首的最值是否离开窗口，判断队内的旧数字是否还可能成为新的最值，如果比新数字小就不可能，需要出队；否则可能，保留，然后再将新数字入队。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] maxSlidingWindow(<span class="type">int</span>[] nums, <span class="type">int</span> k) {</span><br><span class="line">        Deque&lt;Integer&gt; queue=<span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span>[] res=<span class="keyword">new</span> <span class="title class_">int</span>[nums.length-k+<span class="number">1</span>];</span><br><span class="line">        <span class="comment">// i指向即将入栈的元素，j指向即将出栈的元素</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>, j=-k+<span class="number">1</span>;i&lt;nums.length;i++,j++){</span><br><span class="line">            <span class="comment">// 加入新元素，让窗口大小保持为k</span></span><br><span class="line">            <span class="keyword">while</span>(!queue.isEmpty()&amp;&amp;queue.peekLast()&lt;nums[i]){</span><br><span class="line">                queue.pollLast();</span><br><span class="line">            }</span><br><span class="line">            queue.offerLast(nums[i]); <span class="comment">// 入队</span></span><br><span class="line">            <span class="keyword">if</span>(j&lt;<span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="comment">// 计算当前窗口最值</span></span><br><span class="line">            res[j]=queue.peekFirst();</span><br><span class="line">            <span class="comment">// 移动窗口</span></span><br><span class="line">            <span class="keyword">if</span>(queue.peekFirst()==nums[j]){</span><br><span class="line">                queue.pollFirst();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="栈：394-字符串解码"><a href="#栈：394-字符串解码" class="headerlink" title="栈：394. 字符串解码"></a>栈：394. 字符串解码</h1><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/decode-string/description/?envType=study-plan-v2&envId=top-100-liked">394. 字符串解码<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">decodeString</span><span class="params">(String s)</span> {</span><br><span class="line">        StringBuilder res=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="type">int</span> <span class="variable">times</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        LinkedList&lt;Integer&gt; timesStack=<span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        LinkedList&lt;String&gt; substrStack=<span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.length();i++){</span><br><span class="line">            <span class="type">char</span> c=s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span>(c&gt;=<span class="string">'0'</span>&amp;&amp;c&lt;=<span class="string">'9'</span>){</span><br><span class="line">                times=times*<span class="number">10</span>+Integer.parseInt(c+<span class="string">""</span>);</span><br><span class="line">            }<span class="keyword">else</span> <span class="keyword">if</span>(c == <span class="string">'['</span>){</span><br><span class="line">                timesStack.add(times);</span><br><span class="line">                substrStack.add(res.toString());</span><br><span class="line">                times=<span class="number">0</span>;</span><br><span class="line">                res=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">            }<span class="keyword">else</span> <span class="keyword">if</span>(c==<span class="string">']'</span>){</span><br><span class="line">                <span class="type">int</span> curTimes=timesStack.pollLast();</span><br><span class="line">                StringBuilder str=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">                <span class="keyword">while</span>(curTimes--!=<span class="number">0</span>) str.append(res);</span><br><span class="line">                res=<span class="keyword">new</span> <span class="title class_">StringBuilder</span>(substrStack.pollLast()+str);</span><br><span class="line">            }<span class="keyword">else</span>{</span><br><span class="line">                res.append(c);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/LeetCode/">LeetCode</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="article-nav">
+                        
+                        
+                            <div class="article-next">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/05/10/Docker-Nginx%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/"
+                                   title="Docker + Nginx部署前端项目"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Docker + Nginx部署前端项目</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                            <span class="right arrow-icon flex-center">
+                                      <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline-meta.css"/>
+        <script data-pjax src="//cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.js"></script>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          function loadWaline() {
+            const tmpOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+
+            Waline.init({
+              el: '#waline-comment',
+              serverURL: 'https://blog-comment-three.vercel.app',
+              lang: 'zh-CN' || 'zh-CN',
+              comment: '.post-comments-count',
+              reaction: 'true' === 'true',
+              ...tmpOptions
+            })
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              loadWaline()
+            }, 1000)
+          } else {
+            window.addEventListener('DOMContentLoaded', loadWaline)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="nav-text">单调栈</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6-%E4%B8%AD%E7%AD%89"><span class="nav-text">739. 每日温度 - 中等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#84-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2-%E5%9B%B0%E9%9A%BE"><span class="nav-text">84. 柱状图中最大的矩形 - 困难</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#42-%E6%8E%A5%E9%9B%A8%E6%B0%B4-%E5%9B%B0%E9%9A%BE"><span class="nav-text">42. 接雨水 - 困难</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88%E5%81%9A%E6%B3%95"><span class="nav-text">单调栈做法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E5%81%9A%E6%B3%95"><span class="nav-text">双指针做法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="nav-text">单调队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#239-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC-%E5%9B%B0%E9%9A%BE"><span class="nav-text">239. 滑动窗口最大值 - 困难</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%EF%BC%9A394-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81"><span class="nav-text">栈：394. 字符串解码</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Jin Hu</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+                <span class="count-box border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">4.1k</span>
+                </span>
+            
+
+            
+                <span class="count-box border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-box border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="nav-text">单调栈</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6-%E4%B8%AD%E7%AD%89"><span class="nav-text">739. 每日温度 - 中等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#84-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2-%E5%9B%B0%E9%9A%BE"><span class="nav-text">84. 柱状图中最大的矩形 - 困难</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#42-%E6%8E%A5%E9%9B%A8%E6%B0%B4-%E5%9B%B0%E9%9A%BE"><span class="nav-text">42. 接雨水 - 困难</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88%E5%81%9A%E6%B3%95"><span class="nav-text">单调栈做法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E5%81%9A%E6%B3%95"><span class="nav-text">双指针做法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="nav-text">单调队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#239-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC-%E5%9B%B0%E9%9A%BE"><span class="nav-text">239. 滑动窗口最大值 - 困难</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%EF%BC%9A394-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81"><span class="nav-text">栈：394. 字符串解码</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/dark-light-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/local-search.js"></script>
+
+
+<!-- code-block -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/code-block.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/lazyload.js"></script>
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/post/share.js"></script>
+        
+    
+
+    <!-- category-page -->
+    
+
+    <!-- links-page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.8.6/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+    
+        
+    
+
+</body>
+</html>
