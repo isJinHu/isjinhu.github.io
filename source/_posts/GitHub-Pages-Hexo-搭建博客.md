@@ -108,8 +108,6 @@ mathjax: true
 tags:
 ```
 
-
-
 ## 图片插入：结合Typora
 
 Step 1：修改`_config.yml`文件
@@ -138,3 +136,6 @@ Step 3: 设置Typora插入图片时路径：`${filename}`
 hexo config deploy.repository git@github.com:isjinhu/isjinhu.github.io.git
 ```
 
+# 其他链接
+
+[Hexo 如何隐藏文章 - yangstar - 博客园](https://www.cnblogs.com/yangstar/articles/16690342.html)

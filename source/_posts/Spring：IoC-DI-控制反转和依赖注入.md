@@ -2,12 +2,11 @@
 title: Spring：IoC&DI 控制反转和依赖注入
 mathjax: true
 date: 2024-01-30 17:58:07
+hide: true
 tags:
 - java
-- Spring
+- Spring高内聚，低耦合
 ---
-
-# 高内聚，低耦合
 
 软件开发需要遵循**高内聚、低耦合**的原则。
 
