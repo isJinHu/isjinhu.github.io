@@ -9,7 +9,7 @@
     
     <title>
         
-            Docker + Nginx部署前端项目 |
+            LeetCode刷题笔记：数组&amp;双指针 |
         
         Jin&#39;s Blog
     </title>
@@ -292,7 +292,7 @@ mjx-container[display="true"] + br {
             <div class="article-content-bottom border-box">
                 
                     <div class="article-title">
-                        Docker + Nginx部署前端项目
+                        LeetCode刷题笔记：数组&amp;双指针
                     </div>
                 
 
@@ -319,25 +319,16 @@ mjx-container[display="true"] + br {
         
             <span class="meta-info-item article-create-date">
                 <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2024-05-10 13:48:07</span>
-                <span class="mobile">2024-05-10 13:48</span>
+                <span class="pc">2024-05-28 20:43:21</span>
+                <span class="mobile">2024-05-28 20:43</span>
             </span>
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Sun May 19 2024 11:34:50 GMT+0800">2024-05-19 11:34:50</span>
+                <span class="pc" data-updated="Tue May 28 2024 21:31:12 GMT+0800">2024-05-28 21:31:12</span>
             </span>
         
 
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="article-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/Docker/">Docker</a></li>
-                        
-                    
-                </ul>
-            </span>
         
 
         
@@ -345,7 +336,10 @@ mjx-container[display="true"] + br {
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul class="article-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Docker/">Docker</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/LeetCode/">LeetCode</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%AE%97%E6%B3%95/">算法</a></li>
                         
                     
                 </ul>
@@ -355,12 +349,12 @@ mjx-container[display="true"] + br {
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>491 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.1k 字</span>
             </span>
         
         
             <span class="meta-info-item article-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
             </span>
         
         
@@ -381,37 +375,41 @@ mjx-container[display="true"] + br {
                 <div class="article-content keep-markdown-body">
                     
 
-                    <p><strong>后端部署</strong>可以查看：<a href="https://isjinhu.github.io/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">GitHub Actions &amp; Docker实现自动化部署 | Jin’s Blog (isjinhu.github.io)</a></p>
-<span id="more"></span>
+                    <span id="more"></span>
 
-<h1 id="Docker-Nginx部署前端项目"><a href="#Docker-Nginx部署前端项目" class="headerlink" title="Docker + Nginx部署前端项目"></a>Docker + Nginx部署前端项目</h1><p>此处省略Docker安装步骤。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --rm hello-world # 使用该命令可以测试docker是否安装成功</span><br></pre></td></tr></table></figure>
+<h1 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h1><p>双指针算法是一类用2个指针遍历数组或链表的算法，通常用来解决在数据中进行搜索、排序、匹配的问题。</p>
+<h2 id="同向双指针"><a href="#同向双指针" class="headerlink" title="同向双指针"></a>同向双指针</h2><p>同向双指针也可叫快慢双指针，一般慢指针每次移动一步，快指针则移动两步或更多步。</p>
+<p>一般用来解决链表问题。</p>
+<p>用在数组中，可以解决有序数组要根据一定条件原地创建新数组这样一类问题。<strong>具体来说，快指针指向旧数组当前遍历位置，慢指针指向新数组长度（下一个元素要放置的位置），根据新旧数组判断快指针指向的元素是否可以加入新数组</strong>，如<a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-sorted-array/?envType=study-plan-v2&envId=top-interview-150">88. 合并两个有序数组<i class="fas fa-external-link-alt"></i></a>、<a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/description/?envType=study-plan-v2&envId=top-interview-150">27. 移除元素<i class="fas fa-external-link-alt"></i></a>、<a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150">26. 删除有序数组中的重复项<i class="fas fa-external-link-alt"></i></a>、<a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/description/?envType=study-plan-v2&envId=top-interview-150">80. 删除有序数组中的重复项 II <i class="fas fa-external-link-alt"></i></a>。</p>
+<h3 id="88-合并两个有序数组"><a href="#88-合并两个有序数组" class="headerlink" title="88. 合并两个有序数组"></a>88. 合并两个有序数组</h3><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-sorted-array/?envType=study-plan-v2&envId=top-interview-150">88. 合并两个有序数组<i class="fas fa-external-link-alt"></i></a></p>
+<blockquote>
+<p>输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3<br>输出：[1,2,2,3,5,6]<br>解释：需要合并 [1,2,3] 和 [2,5,6] 。<br>合并结果是 [1,2,2,3,5,6] ，其中斜体加粗标注的为 nums1 中的元素。</p>
+</blockquote>
+<p>从两个数组末尾遍历，慢指针指向下一个元素将要放置的位置，2个快指针分别指向2个数组当前正在对比的元素，哪个数字更大就放置在慢指针指向位置，然后再移动指针。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span> m, <span class="type">int</span>[] nums2, <span class="type">int</span> n)</span> {</span><br><span class="line">        <span class="comment">// 同向双指针</span></span><br><span class="line">        <span class="type">int</span> slow=m+n-<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> fast1=m-<span class="number">1</span>, fast2=n-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(fast1&gt;=<span class="number">0</span>&amp;&amp;fast2&gt;=<span class="number">0</span>){</span><br><span class="line">            <span class="keyword">if</span>(nums1[fast1]&gt;nums2[fast2]){</span><br><span class="line">                nums1[slow--]=nums1[fast1--];</span><br><span class="line">            }<span class="keyword">else</span>{</span><br><span class="line">                nums1[slow--]=nums2[fast2--];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">while</span>(fast2&gt;=<span class="number">0</span>){</span><br><span class="line">            nums1[slow--]=nums2[fast2--];</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
-<h2 id="Step-1-拉取Nginx镜像"><a href="#Step-1-拉取Nginx镜像" class="headerlink" title="Step 1: 拉取Nginx镜像"></a><strong>Step 1</strong>: 拉取Nginx镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx # 拉取镜像，没有指定版本会默认下载最新 </span><br></pre></td></tr></table></figure>
+<h3 id="27-移除元素"><a href="#27-移除元素" class="headerlink" title="27. 移除元素"></a>27. 移除元素</h3><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/description/?envType=study-plan-v2&envId=top-interview-150">27. 移除元素<i class="fas fa-external-link-alt"></i></a></p>
+<blockquote>
+<p>输入：nums = [3,2,2,3], val = 3<br>输出：2, nums = [2,2,<em>,</em>]<br>解释：你的函数函数应该返回 k = 2, 并且 nums 中的前两个元素均为 2。<br>你在返回的 k 个元素之外留下了什么并不重要（因此它们并不计入评测）</p>
+</blockquote>
+<p>慢指针指向下一个元素将要放置的位置，快指针指向当前遍历位置，如果这个数是要移除的元素，快指针后移，否则将其复制到慢指针指向位置再后移。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> {</span><br><span class="line">        <span class="comment">// 同向双指针</span></span><br><span class="line">        <span class="type">int</span> slow=<span class="number">0</span>, fast=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(fast&lt;nums.length){</span><br><span class="line">            <span class="keyword">if</span>(nums[fast]!=val){</span><br><span class="line">                nums[slow++]=nums[fast];</span><br><span class="line">            }</span><br><span class="line">            fast++;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
-<h2 id="Step-2-创建挂载目录"><a href="#Step-2-创建挂载目录" class="headerlink" title="Step 2: 创建挂载目录"></a><strong>Step 2</strong>: 创建挂载目录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">注意当前路径切换</span></span><br><span class="line">mkdir -p nginx/html</span><br><span class="line">mkdir -p nginx/logs</span><br><span class="line">mkdir -p nginx/conf</span><br><span class="line">cd nginx</span><br><span class="line">chomd 777 html logs conf</span><br></pre></td></tr></table></figure>
+<h3 id="26-删除有序数组中的重复项"><a href="#26-删除有序数组中的重复项" class="headerlink" title="26. 删除有序数组中的重复项"></a>26. 删除有序数组中的重复项</h3><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150">26. 删除有序数组中的重复项<i class="fas fa-external-link-alt"></i></a></p>
+<blockquote>
+<p>输入：nums = [1,1,2]<br>输出：2, nums = [1,2,_]<br>解释：函数应该返回新的长度 2 ，并且原数组 nums 的前两个元素被修改为 1, 2 。不需要考虑数组中超出新长度后面的元素。</p>
+</blockquote>
+<p>慢指针指向下一个元素将要放置的位置（相当于新数组长度位置），快指针指向当前遍历位置。</p>
+<p>如果快指针指向的元素已经在新数组中slow-1位置出现，那么就重复，快指针直接后移，否则复制到慢指针位置再后移。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">        <span class="comment">// 同向双指针</span></span><br><span class="line">        <span class="keyword">if</span>(nums.length==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> slow=<span class="number">1</span>, fast=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(fast&lt;nums.length){</span><br><span class="line">            <span class="keyword">if</span>(nums[fast]==nums[slow-<span class="number">1</span>]){</span><br><span class="line">                fast++;</span><br><span class="line">            }<span class="keyword">else</span>{</span><br><span class="line">                nums[slow++]=nums[fast++];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
-<h2 id="Step-3-启动一个不挂载的容器"><a href="#Step-3-启动一个不挂载的容器" class="headerlink" title="Step 3: 启动一个不挂载的容器"></a><strong>Step 3</strong>: 启动一个不挂载的容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name nginx -p 1000:80 nginx</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>--name nginx</code>：指定容器名称</li>
-<li><code>-p 1000:80</code> 映射端口（宿主机:容器）<ul>
-<li>这里可以自选端口，使用<code>lsof -i:1000</code>查看端口是否被占用</li>
-</ul>
-</li>
-<li><code>-d</code> 守护进程运行</li>
-</ul>
-<h2 id="Step-4-拷贝容器内默认配置"><a href="#Step-4-拷贝容器内默认配置" class="headerlink" title="Step 4: 拷贝容器内默认配置"></a><strong>Step 4</strong>: 拷贝容器内默认配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker cp nginx:/etc/nginx/nginx.conf nginx/conf/nginx.conf</span><br><span class="line">docker cp nginx:/etc/nginx/conf.d nginx/conf/conf.d</span><br><span class="line">docker cp nginx:/usr/share/nginx/html nginx/</span><br></pre></td></tr></table></figure>
-
-<h2 id="Step-5-停止、删除容器"><a href="#Step-5-停止、删除容器" class="headerlink" title="Step 5: 停止、删除容器"></a><strong>Step 5</strong>: 停止、删除容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker stop nginx # 停止容器</span><br><span class="line">docker rm nginx # 删除容器</span><br><span class="line">docker ps -a # 查看所有容器</span><br></pre></td></tr></table></figure>
-
-<h2 id="Step-6-部署前端项目"><a href="#Step-6-部署前端项目" class="headerlink" title="Step 6: 部署前端项目"></a><strong>Step 6</strong>: 部署前端项目</h2><ul>
-<li><p>将前端项目目录（vue项目build后的dist目录）上传至<code>nginx/html</code>目录下，并修改<code>nginx/conf.d/default.conf</code>文件。</p>
-</li>
-<li><p>内容可以参考，其中proxy_pass记得修改为对应部署的后端地址，listen为前端的端口。</p>
-  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> {</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">1001</span>;</span><br><span class="line">    <span class="section">location</span> / {</span><br><span class="line">        <span class="attribute">root</span> /usr/share/nginx/html/hmdp;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="attribute">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.html;</span><br><span class="line">    <span class="section">location</span> = /50x.html {</span><br><span class="line">        <span class="attribute">root</span>   /usr/share/nginx/html;</span><br><span class="line">    }</span><br><span class="line">    <span class="section">location</span> /api {</span><br><span class="line">        <span class="attribute">default_type</span>  application/json;</span><br><span class="line">        <span class="comment">#internal;</span></span><br><span class="line">        <span class="attribute">keepalive_timeout</span>   <span class="number">30s</span>;</span><br><span class="line">        <span class="attribute">keepalive_requests</span>  <span class="number">1000</span>;</span><br><span class="line">        <span class="comment">#支持keep-alive</span></span><br><span class="line">        <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">        <span class="attribute">rewrite</span> /api(/.*) <span class="variable">$1</span> <span class="literal">break</span>;</span><br><span class="line">        <span class="attribute">proxy_pass_request_headers</span> <span class="literal">on</span>;</span><br><span class="line">        <span class="comment">#more_clear_input_headers Accept-Encoding;</span></span><br><span class="line">        <span class="attribute">proxy_next_upstream</span> <span class="literal">error</span> timeout;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8081;</span><br><span class="line">        <span class="comment"># proxy_pass http://backend;</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment"># upstream backend {</span></span><br><span class="line"><span class="comment">#     server 127.0.0.1:80 max_fails=5 fail_timeout=10s weight=1;</span></span><br><span class="line"><span class="comment">#     server 127.0.0.1:8082 max_fails=5 fail_timeout=10s weight=1;</span></span><br><span class="line"><span class="comment"># }</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Step-7-运行镜像，其中-p指定对应的端口映射。"><a href="#Step-7-运行镜像，其中-p指定对应的端口映射。" class="headerlink" title="Step 7: 运行镜像，其中-p指定对应的端口映射。"></a><strong>Step 7</strong>: 运行镜像，其中-p指定对应的端口映射。</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run \                  </span><br><span class="line">-p 1000:80 \</span><br><span class="line">-p 1001:1001 \</span><br><span class="line">--name nginx \</span><br><span class="line">-v /home/ubuntu/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \</span><br><span class="line">-v /home/ubuntu/nginx/conf/conf.d:/etc/nginx/conf.d \</span><br><span class="line">-v /home/ubuntu/nginx/logs:/var/log/nginx \</span><br><span class="line">-v /home/ubuntu/nginx/html:/usr/share/nginx/html \</span><br><span class="line">-d nginx:latest</span><br></pre></td></tr></table></figure>
+<h3 id="80-删除有序数组中的重复项-II"><a href="#80-删除有序数组中的重复项-II" class="headerlink" title="80. 删除有序数组中的重复项 II"></a>80. 删除有序数组中的重复项 II</h3><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array-ii/description/?envType=study-plan-v2&envId=top-interview-150">80. 删除有序数组中的重复项 II<i class="fas fa-external-link-alt"></i></a></p>
+<blockquote>
+<p>输入：nums = [1,1,1,2,2,3]<br>输出：5, nums = [1,1,2,2,3]<br>解释：函数应返回新长度 length = 5, 并且原数组的前五个元素被修改为 1, 1, 2, 2, 3。 不需要考虑数组中超出新长度后面的元素</p>
+</blockquote>
+<p>慢指针指向下一个元素将要放置的位置（相当于新数组长度位置），快指针指向当前遍历位置。</p>
+<p>如果当前元素与新数组的倒数第二个数一样，说明新数组已出现2次该数，该数不需要加入新数组，快指针直接后移，否则复制后再后移。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">        <span class="keyword">if</span>(nums.length&lt;<span class="number">3</span>) <span class="keyword">return</span> nums.length;</span><br><span class="line">        <span class="type">int</span> slow=<span class="number">2</span>, fast=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(fast&lt;nums.length){</span><br><span class="line">            <span class="keyword">if</span>(nums[slow-<span class="number">2</span>]!=nums[fast]){</span><br><span class="line">                nums[slow++]=nums[fast++];</span><br><span class="line">            }<span class="keyword">else</span>{</span><br><span class="line">                fast++;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 
                 </div>
@@ -424,7 +422,11 @@ mjx-container[display="true"] + br {
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Docker/">Docker</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/LeetCode/">LeetCode</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
                                     </li>
                                 
                             </ul>
@@ -463,31 +465,15 @@ mjx-container[display="true"] + br {
                 
                     <div class="article-nav">
                         
-                            <div class="article-prev">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2024/05/11/LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%A0%88-%E5%8D%95%E8%B0%83%E6%A0%88-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/"
-                                   title="LeetCode刷题笔记：栈&amp;单调栈&amp;单调队列"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                      <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                            <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">LeetCode刷题笔记：栈&amp;单调栈&amp;单调队列</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="article-next">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/"
-                                   title="GitHub Actions &amp; Docker实现自动化部署"
+                                   href="/2024/05/14/LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-%E5%9B%9E%E6%BA%AF-%E8%B4%AA%E5%BF%83-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"
+                                   title="LeetCode刷题笔记: 回溯&amp;贪心&amp;动态规划"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">GitHub Actions &amp; Docker实现自动化部署</span>
+                                        <span class="post-nav-title-item text-ellipsis">LeetCode刷题笔记: 回溯&amp;贪心&amp;动态规划</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                             <span class="right arrow-icon flex-center">
@@ -555,7 +541,7 @@ mjx-container[display="true"] + br {
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Nginx%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="nav-text">Docker + Nginx部署前端项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-%E6%8B%89%E5%8F%96Nginx%E9%95%9C%E5%83%8F"><span class="nav-text">Step 1: 拉取Nginx镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-%E5%88%9B%E5%BB%BA%E6%8C%82%E8%BD%BD%E7%9B%AE%E5%BD%95"><span class="nav-text">Step 2: 创建挂载目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E4%B8%8D%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-text">Step 3: 启动一个不挂载的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-%E6%8B%B7%E8%B4%9D%E5%AE%B9%E5%99%A8%E5%86%85%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="nav-text">Step 4: 拷贝容器内默认配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5-%E5%81%9C%E6%AD%A2%E3%80%81%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8"><span class="nav-text">Step 5: 停止、删除容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-6-%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="nav-text">Step 6: 部署前端项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-7-%E8%BF%90%E8%A1%8C%E9%95%9C%E5%83%8F%EF%BC%8C%E5%85%B6%E4%B8%AD-p%E6%8C%87%E5%AE%9A%E5%AF%B9%E5%BA%94%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E3%80%82"><span class="nav-text">Step 7: 运行镜像，其中-p指定对应的端口映射。</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E5%90%91%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">同向双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-text">88. 合并两个有序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-text">27. 移除元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9"><span class="nav-text">26. 删除有序数组中的重复项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#80-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9-II"><span class="nav-text">80. 删除有序数组中的重复项 II</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
@@ -738,7 +724,7 @@ mjx-container[display="true"] + br {
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Nginx%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="nav-text">Docker + Nginx部署前端项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-%E6%8B%89%E5%8F%96Nginx%E9%95%9C%E5%83%8F"><span class="nav-text">Step 1: 拉取Nginx镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-%E5%88%9B%E5%BB%BA%E6%8C%82%E8%BD%BD%E7%9B%AE%E5%BD%95"><span class="nav-text">Step 2: 创建挂载目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E4%B8%8D%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-text">Step 3: 启动一个不挂载的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-%E6%8B%B7%E8%B4%9D%E5%AE%B9%E5%99%A8%E5%86%85%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="nav-text">Step 4: 拷贝容器内默认配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5-%E5%81%9C%E6%AD%A2%E3%80%81%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8"><span class="nav-text">Step 5: 停止、删除容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-6-%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="nav-text">Step 6: 部署前端项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-7-%E8%BF%90%E8%A1%8C%E9%95%9C%E5%83%8F%EF%BC%8C%E5%85%B6%E4%B8%AD-p%E6%8C%87%E5%AE%9A%E5%AF%B9%E5%BA%94%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E3%80%82"><span class="nav-text">Step 7: 运行镜像，其中-p指定对应的端口映射。</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E5%90%91%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">同向双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-text">88. 合并两个有序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-text">27. 移除元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9"><span class="nav-text">26. 删除有序数组中的重复项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#80-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9-II"><span class="nav-text">80. 删除有序数组中的重复项 II</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 

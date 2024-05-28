@@ -9,7 +9,7 @@
     
     <title>
         
-            Docker + Nginx部署前端项目 |
+            LeetCode刷题笔记: 回溯&amp;贪心&amp;动态规划 |
         
         Jin&#39;s Blog
     </title>
@@ -292,7 +292,7 @@ mjx-container[display="true"] + br {
             <div class="article-content-bottom border-box">
                 
                     <div class="article-title">
-                        Docker + Nginx部署前端项目
+                        LeetCode刷题笔记: 回溯&amp;贪心&amp;动态规划
                     </div>
                 
 
@@ -319,25 +319,16 @@ mjx-container[display="true"] + br {
         
             <span class="meta-info-item article-create-date">
                 <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
-                <span class="pc">2024-05-10 13:48:07</span>
-                <span class="mobile">2024-05-10 13:48</span>
+                <span class="pc">2024-05-14 14:09:51</span>
+                <span class="mobile">2024-05-14 14:09</span>
             </span>
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Sun May 19 2024 11:34:50 GMT+0800">2024-05-19 11:34:50</span>
+                <span class="pc" data-updated="Tue May 14 2024 19:53:45 GMT+0800">2024-05-14 19:53:45</span>
             </span>
         
 
-        
-            <span class="meta-info-item article-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="article-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/Docker/">Docker</a></li>
-                        
-                    
-                </ul>
-            </span>
         
 
         
@@ -345,7 +336,10 @@ mjx-container[display="true"] + br {
                 <i class="icon fas fa-tags"></i>&nbsp;
                 <ul class="article-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Docker/">Docker</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/LeetCode/">LeetCode</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%AE%97%E6%B3%95/">算法</a></li>
                         
                     
                 </ul>
@@ -355,12 +349,12 @@ mjx-container[display="true"] + br {
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>491 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>890 字</span>
             </span>
         
         
             <span class="meta-info-item article-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>3 分钟</span>
             </span>
         
         
@@ -381,39 +375,46 @@ mjx-container[display="true"] + br {
                 <div class="article-content keep-markdown-body">
                     
 
-                    <p><strong>后端部署</strong>可以查看：<a href="https://isjinhu.github.io/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">GitHub Actions &amp; Docker实现自动化部署 | Jin’s Blog (isjinhu.github.io)</a></p>
+                    <p><strong>回溯</strong>就是暴力穷举，是一种搜索方式，其核心思想是从一个初始状态出发，深度优先搜索遍历所有可能的解决方案（解空间），如果确定某种方案不可行就回溯到上一步重新搜索。一般用来解决组合问题（无序）、子集问题（无序）、排列问题（有序）、字符串切割问题、棋盘问题等。</p>
+<p><strong>贪心</strong>算法的思想是在每个决策阶段，选择局部最优解，以此获取全局最优解。</p>
+<p><strong>动态规划</strong></p>
 <span id="more"></span>
 
-<h1 id="Docker-Nginx部署前端项目"><a href="#Docker-Nginx部署前端项目" class="headerlink" title="Docker + Nginx部署前端项目"></a>Docker + Nginx部署前端项目</h1><p>此处省略Docker安装步骤。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --rm hello-world # 使用该命令可以测试docker是否安装成功</span><br></pre></td></tr></table></figure>
-
-<h2 id="Step-1-拉取Nginx镜像"><a href="#Step-1-拉取Nginx镜像" class="headerlink" title="Step 1: 拉取Nginx镜像"></a><strong>Step 1</strong>: 拉取Nginx镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx # 拉取镜像，没有指定版本会默认下载最新 </span><br></pre></td></tr></table></figure>
-
-<h2 id="Step-2-创建挂载目录"><a href="#Step-2-创建挂载目录" class="headerlink" title="Step 2: 创建挂载目录"></a><strong>Step 2</strong>: 创建挂载目录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">注意当前路径切换</span></span><br><span class="line">mkdir -p nginx/html</span><br><span class="line">mkdir -p nginx/logs</span><br><span class="line">mkdir -p nginx/conf</span><br><span class="line">cd nginx</span><br><span class="line">chomd 777 html logs conf</span><br></pre></td></tr></table></figure>
-
-<h2 id="Step-3-启动一个不挂载的容器"><a href="#Step-3-启动一个不挂载的容器" class="headerlink" title="Step 3: 启动一个不挂载的容器"></a><strong>Step 3</strong>: 启动一个不挂载的容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name nginx -p 1000:80 nginx</span><br></pre></td></tr></table></figure>
-
+<h1 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h1><p><strong>回溯</strong>就是暴力穷举，其核心思想是从一个初始状态出发，深度优先搜索遍历所有可能的解决方案（解空间），当遇到正解就记录，直到找到解或者尝试所有可能后终止。</p>
+<p>可以解决：</p>
 <ul>
-<li><code>--name nginx</code>：指定容器名称</li>
-<li><code>-p 1000:80</code> 映射端口（宿主机:容器）<ul>
-<li>这里可以自选端口，使用<code>lsof -i:1000</code>查看端口是否被占用</li>
+<li>组合问题：n个数取满足规则的k个数</li>
+<li>子集问题：n个数有多少符合条件的子集</li>
+<li>排列问题：n个数按一定规则的全排列有几种方式</li>
+<li>字符串分割问题：字符串按一定规则有几种切割方式</li>
+<li>棋盘问题：N皇后、数独等</li>
 </ul>
-</li>
-<li><code>-d</code> 守护进程运行</li>
+<p>一般需要考虑3个问题：</p>
+<ul>
+<li>路径：已经做出的选择</li>
+<li>选择列表：可以做的选择</li>
+<li>结束条件：无法再做选择的条件</li>
 </ul>
-<h2 id="Step-4-拷贝容器内默认配置"><a href="#Step-4-拷贝容器内默认配置" class="headerlink" title="Step 4: 拷贝容器内默认配置"></a><strong>Step 4</strong>: 拷贝容器内默认配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker cp nginx:/etc/nginx/nginx.conf nginx/conf/nginx.conf</span><br><span class="line">docker cp nginx:/etc/nginx/conf.d nginx/conf/conf.d</span><br><span class="line">docker cp nginx:/usr/share/nginx/html nginx/</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">result = []</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">backtrack</span>(<span class="params">path, choices</span>):</span><br><span class="line">    <span class="keyword">if</span> 满足结束条件:</span><br><span class="line">        result.add(path)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">for</span> choice <span class="keyword">in</span> choices:</span><br><span class="line">        记录选择</span><br><span class="line">        backtrack(path, choices)</span><br><span class="line">        撤销选择</span><br></pre></td></tr></table></figure>
 
-<h2 id="Step-5-停止、删除容器"><a href="#Step-5-停止、删除容器" class="headerlink" title="Step 5: 停止、删除容器"></a><strong>Step 5</strong>: 停止、删除容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker stop nginx # 停止容器</span><br><span class="line">docker rm nginx # 删除容器</span><br><span class="line">docker ps -a # 查看所有容器</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a class="link" target="_blank" rel="noopener" href="https://labuladong.online/algo/essential-technique/backtrack-framework/">回溯算法解题套路框架 | labuladong 的算法笔记<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://programmercarl.com/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html">代码随想录<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h2 id="组合问题"><a href="#组合问题" class="headerlink" title="组合问题"></a>组合问题</h2><h3 id="77-组合-中等"><a href="#77-组合-中等" class="headerlink" title="77. 组合 - 中等"></a>77. 组合 - 中等</h3><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/combinations/">77. 组合 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
+<p>思路：</p>
+<h2 id="46-全排列-中等"><a href="#46-全排列-中等" class="headerlink" title="46. 全排列 - 中等"></a>46. 全排列 - 中等</h2><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations/?envType=study-plan-v2&envId=top-100-liked">46. 全排列<i class="fas fa-external-link-alt"></i></a></p>
+<p>思路：这题是回溯的经典应用。按我们自己穷举全排列的思路，首先选择第一个的数字，下一个的数字在剩下的数字列表中选择，这样直到所有的数字都选完。所以我们需要记录之前已经选过的数字，从没选过的数字中进行当前阶段的选择。</p>
+<p>具体来说，我们可以从第0个位置开始，递归选择每个没被选过的数字，选择完所有元素就回溯撤销选择。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res;</span><br><span class="line">    List&lt;Integer&gt; path;</span><br><span class="line">    <span class="type">int</span>[] nums;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">permute</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">        <span class="built_in">this</span>.res=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="built_in">this</span>.path=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(nums.length);</span><br><span class="line">        <span class="built_in">this</span>.nums=nums;</span><br><span class="line">        dfs(<span class="number">0</span>, <span class="keyword">new</span> <span class="title class_">boolean</span>[nums.length]);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> i, <span class="type">boolean</span>[] used)</span>{</span><br><span class="line">        <span class="keyword">if</span>(nums.length==i){</span><br><span class="line">            res.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(path));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;nums.length;j++){</span><br><span class="line">            <span class="keyword">if</span>(!used[j]){</span><br><span class="line">                path.add(nums[j]); <span class="comment">// 选择</span></span><br><span class="line">                used[j]=<span class="literal">true</span>;</span><br><span class="line">                dfs(i+<span class="number">1</span>, used); <span class="comment">// 递归</span></span><br><span class="line">                path.remove(i); <span class="comment">// 撤销选择</span></span><br><span class="line">                used[j]=<span class="literal">false</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
-<h2 id="Step-6-部署前端项目"><a href="#Step-6-部署前端项目" class="headerlink" title="Step 6: 部署前端项目"></a><strong>Step 6</strong>: 部署前端项目</h2><ul>
-<li><p>将前端项目目录（vue项目build后的dist目录）上传至<code>nginx/html</code>目录下，并修改<code>nginx/conf.d/default.conf</code>文件。</p>
-</li>
-<li><p>内容可以参考，其中proxy_pass记得修改为对应部署的后端地址，listen为前端的端口。</p>
-  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> {</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">1001</span>;</span><br><span class="line">    <span class="section">location</span> / {</span><br><span class="line">        <span class="attribute">root</span> /usr/share/nginx/html/hmdp;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="attribute">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.html;</span><br><span class="line">    <span class="section">location</span> = /50x.html {</span><br><span class="line">        <span class="attribute">root</span>   /usr/share/nginx/html;</span><br><span class="line">    }</span><br><span class="line">    <span class="section">location</span> /api {</span><br><span class="line">        <span class="attribute">default_type</span>  application/json;</span><br><span class="line">        <span class="comment">#internal;</span></span><br><span class="line">        <span class="attribute">keepalive_timeout</span>   <span class="number">30s</span>;</span><br><span class="line">        <span class="attribute">keepalive_requests</span>  <span class="number">1000</span>;</span><br><span class="line">        <span class="comment">#支持keep-alive</span></span><br><span class="line">        <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">        <span class="attribute">rewrite</span> /api(/.*) <span class="variable">$1</span> <span class="literal">break</span>;</span><br><span class="line">        <span class="attribute">proxy_pass_request_headers</span> <span class="literal">on</span>;</span><br><span class="line">        <span class="comment">#more_clear_input_headers Accept-Encoding;</span></span><br><span class="line">        <span class="attribute">proxy_next_upstream</span> <span class="literal">error</span> timeout;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8081;</span><br><span class="line">        <span class="comment"># proxy_pass http://backend;</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment"># upstream backend {</span></span><br><span class="line"><span class="comment">#     server 127.0.0.1:80 max_fails=5 fail_timeout=10s weight=1;</span></span><br><span class="line"><span class="comment">#     server 127.0.0.1:8082 max_fails=5 fail_timeout=10s weight=1;</span></span><br><span class="line"><span class="comment"># }</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Step-7-运行镜像，其中-p指定对应的端口映射。"><a href="#Step-7-运行镜像，其中-p指定对应的端口映射。" class="headerlink" title="Step 7: 运行镜像，其中-p指定对应的端口映射。"></a><strong>Step 7</strong>: 运行镜像，其中-p指定对应的端口映射。</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run \                  </span><br><span class="line">-p 1000:80 \</span><br><span class="line">-p 1001:1001 \</span><br><span class="line">--name nginx \</span><br><span class="line">-v /home/ubuntu/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \</span><br><span class="line">-v /home/ubuntu/nginx/conf/conf.d:/etc/nginx/conf.d \</span><br><span class="line">-v /home/ubuntu/nginx/logs:/var/log/nginx \</span><br><span class="line">-v /home/ubuntu/nginx/html:/usr/share/nginx/html \</span><br><span class="line">-d nginx:latest</span><br></pre></td></tr></table></figure>
+<h2 id="78-子集-中等"><a href="#78-子集-中等" class="headerlink" title="78. 子集 - 中等"></a>78. 子集 - 中等</h2><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsets/description/?envType=study-plan-v2&envId=top-100-liked">78. 子集<i class="fas fa-external-link-alt"></i></a></p>
+<p>思路：对于每个数字我们可以选或者不选，因此第i层就是对会有对第i个数字选或者不选两个选项。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res;</span><br><span class="line">    List&lt;Integer&gt; path;</span><br><span class="line">    <span class="type">int</span>[] nums;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">subsets</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">        <span class="built_in">this</span>.res=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="built_in">this</span>.path=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="built_in">this</span>.nums=nums;</span><br><span class="line">        dfs(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> i)</span>{</span><br><span class="line">        <span class="keyword">if</span>(i==nums.length){</span><br><span class="line">            res.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(path));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 选这个数字</span></span><br><span class="line">        path.add(nums[i]);</span><br><span class="line">        dfs(i+<span class="number">1</span>);</span><br><span class="line">		<span class="comment">// 不选这个数字</span></span><br><span class="line">        path.remove(path.size()-<span class="number">1</span>); </span><br><span class="line">        dfs(i+<span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 撤销选择：需要注意这里的撤销选择只的是对这个数字的选择行为本身（回到的是选择上一个数字的状态），而不是选这个数字</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
-
+<h2 id="39-组合总和-中等"><a href="#39-组合总和-中等" class="headerlink" title="39. 组合总和 - 中等"></a>39. 组合总和 - 中等</h2><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/combination-sum/?envType=study-plan-v2&envId=top-100-liked">39. 组合总和<i class="fas fa-external-link-alt"></i></a></p>
+<p>思路：对于每个节点，我们都可以</p>
+<h1 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h1>
                 </div>
 
                 
@@ -424,7 +425,11 @@ mjx-container[display="true"] + br {
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Docker/">Docker</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/LeetCode/">LeetCode</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
                                     </li>
                                 
                             </ul>
@@ -466,14 +471,14 @@ mjx-container[display="true"] + br {
                             <div class="article-prev">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/05/11/LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%A0%88-%E5%8D%95%E8%B0%83%E6%A0%88-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/"
-                                   title="LeetCode刷题笔记：栈&amp;单调栈&amp;单调队列"
+                                   href="/2024/05/28/LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%95%B0%E7%BB%84-%E5%8F%8C%E6%8C%87%E9%92%88/"
+                                   title="LeetCode刷题笔记：数组&amp;双指针"
                                 >
                                     <span class="left arrow-icon flex-center">
                                       <i class="fas fa-chevron-left"></i>
                                     </span>
                                             <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">LeetCode刷题笔记：栈&amp;单调栈&amp;单调队列</span>
+                                        <span class="post-nav-title-item text-ellipsis">LeetCode刷题笔记：数组&amp;双指针</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -483,11 +488,11 @@ mjx-container[display="true"] + br {
                             <div class="article-next">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/"
-                                   title="GitHub Actions &amp; Docker实现自动化部署"
+                                   href="/2024/05/13/Java8-Stream%E6%B5%81/"
+                                   title="Java8-Stream流"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">GitHub Actions &amp; Docker实现自动化部署</span>
+                                        <span class="post-nav-title-item text-ellipsis">Java8-Stream流</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                             <span class="right arrow-icon flex-center">
@@ -555,7 +560,7 @@ mjx-container[display="true"] + br {
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Nginx%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="nav-text">Docker + Nginx部署前端项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-%E6%8B%89%E5%8F%96Nginx%E9%95%9C%E5%83%8F"><span class="nav-text">Step 1: 拉取Nginx镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-%E5%88%9B%E5%BB%BA%E6%8C%82%E8%BD%BD%E7%9B%AE%E5%BD%95"><span class="nav-text">Step 2: 创建挂载目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E4%B8%8D%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-text">Step 3: 启动一个不挂载的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-%E6%8B%B7%E8%B4%9D%E5%AE%B9%E5%99%A8%E5%86%85%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="nav-text">Step 4: 拷贝容器内默认配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5-%E5%81%9C%E6%AD%A2%E3%80%81%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8"><span class="nav-text">Step 5: 停止、删除容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-6-%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="nav-text">Step 6: 部署前端项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-7-%E8%BF%90%E8%A1%8C%E9%95%9C%E5%83%8F%EF%BC%8C%E5%85%B6%E4%B8%AD-p%E6%8C%87%E5%AE%9A%E5%AF%B9%E5%BA%94%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E3%80%82"><span class="nav-text">Step 7: 运行镜像，其中-p指定对应的端口映射。</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF"><span class="nav-text">回溯</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%97%AE%E9%A2%98"><span class="nav-text">组合问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#77-%E7%BB%84%E5%90%88-%E4%B8%AD%E7%AD%89"><span class="nav-text">77. 组合 - 中等</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#46-%E5%85%A8%E6%8E%92%E5%88%97-%E4%B8%AD%E7%AD%89"><span class="nav-text">46. 全排列 - 中等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#78-%E5%AD%90%E9%9B%86-%E4%B8%AD%E7%AD%89"><span class="nav-text">78. 子集 - 中等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#39-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-%E4%B8%AD%E7%AD%89"><span class="nav-text">39. 组合总和 - 中等</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83"><span class="nav-text">贪心</span></a></li></ol>
     </div>
 </div>
 
@@ -738,7 +743,7 @@ mjx-container[display="true"] + br {
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Nginx%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="nav-text">Docker + Nginx部署前端项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-%E6%8B%89%E5%8F%96Nginx%E9%95%9C%E5%83%8F"><span class="nav-text">Step 1: 拉取Nginx镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-%E5%88%9B%E5%BB%BA%E6%8C%82%E8%BD%BD%E7%9B%AE%E5%BD%95"><span class="nav-text">Step 2: 创建挂载目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E4%B8%8D%E6%8C%82%E8%BD%BD%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-text">Step 3: 启动一个不挂载的容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-%E6%8B%B7%E8%B4%9D%E5%AE%B9%E5%99%A8%E5%86%85%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="nav-text">Step 4: 拷贝容器内默认配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5-%E5%81%9C%E6%AD%A2%E3%80%81%E5%88%A0%E9%99%A4%E5%AE%B9%E5%99%A8"><span class="nav-text">Step 5: 停止、删除容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-6-%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="nav-text">Step 6: 部署前端项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-7-%E8%BF%90%E8%A1%8C%E9%95%9C%E5%83%8F%EF%BC%8C%E5%85%B6%E4%B8%AD-p%E6%8C%87%E5%AE%9A%E5%AF%B9%E5%BA%94%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E3%80%82"><span class="nav-text">Step 7: 运行镜像，其中-p指定对应的端口映射。</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF"><span class="nav-text">回溯</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%97%AE%E9%A2%98"><span class="nav-text">组合问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#77-%E7%BB%84%E5%90%88-%E4%B8%AD%E7%AD%89"><span class="nav-text">77. 组合 - 中等</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#46-%E5%85%A8%E6%8E%92%E5%88%97-%E4%B8%AD%E7%AD%89"><span class="nav-text">46. 全排列 - 中等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#78-%E5%AD%90%E9%9B%86-%E4%B8%AD%E7%AD%89"><span class="nav-text">78. 子集 - 中等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#39-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-%E4%B8%AD%E7%AD%89"><span class="nav-text">39. 组合总和 - 中等</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83"><span class="nav-text">贪心</span></a></li></ol>
     </div>
 </div>
 
