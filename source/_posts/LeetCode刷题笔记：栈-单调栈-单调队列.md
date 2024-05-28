@@ -59,7 +59,7 @@ class Solution {
 
 [84. 柱状图中最大的矩形](https://leetcode.cn/problems/largest-rectangle-in-histogram/description/?envType=study-plan-v2&envId=top-100-liked)：给定柱状图中每个柱子高度，求能勾勒出的矩形最大面积。
 
-![image-20240511145906164](LeetCode刷题笔记：栈-单调栈/image-20240511145906164.png)
+![image-20240511145906164](LeetCode刷题笔记：栈-单调栈-单调队列/image-20240511145906164.png)
 
 > 输入：heights = [2,1,5,6,2,3]
 >
@@ -108,11 +108,11 @@ class Solution {
 
 [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/description/?envType=study-plan-v2&envId=top-100-liked)
 
-![image-20240511193851026](LeetCode刷题笔记：栈-单调栈/image-20240511193851026.png)
+![image-20240511193851026](LeetCode刷题笔记：栈-单调栈-单调队列/image-20240511193851026.png)
 
 思路：当我们找到右侧第一个比某个位置大的元素时，这里就能接水，相当于横着计算。
 
-![42.接雨水2](LeetCode刷题笔记：栈-单调栈/20210223092629946.png)
+![42.接雨水2](LeetCode刷题笔记：栈-单调栈-单调队列/20210223092629946.png)
 
 ```java
 class Solution {
@@ -173,7 +173,7 @@ class Solution {
 
 [239. 滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum/description/?envType=study-plan-v2&envId=top-100-liked)
 
-![image-20240511224949472](LeetCode刷题笔记：栈-单调栈/image-20240511224949472.png)
+![image-20240511224949472](LeetCode刷题笔记：栈-单调栈-单调队列/image-20240511224949472.png)
 
 思路：对于窗口[1 3 -1]，其中3是最大值，3之前的数字1比3小且更早离开，所以无论窗口如何移动都不会成为最大值，3之后的数字-1比3小但更晚离开，因此可能成为最大值。每次移动时，需要判断队首的最值是否离开窗口，判断队内的旧数字是否还可能成为新的最值，如果比新数字小就不可能，需要出队；否则可能，保留，然后再将新数字入队。
 

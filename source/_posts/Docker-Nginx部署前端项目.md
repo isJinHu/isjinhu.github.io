@@ -56,7 +56,7 @@ docker pull nginx # 拉取镜像，没有指定版本会默认下载最新
  docker cp nginx:/usr/share/nginx/html nginx/
 ```
 
-## **Step 5**:停止、删除容器
+## **Step 5**: 停止、删除容器
 
 ```shell
  docker stop nginx # 停止容器
