@@ -325,7 +325,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Tue May 28 2024 21:31:12 GMT+0800">2024-05-28 21:31:12</span>
+                <span class="pc" data-updated="Thu May 30 2024 11:14:56 GMT+0800">2024-05-30 11:14:56</span>
             </span>
         
 
@@ -349,12 +349,12 @@ mjx-container[display="true"] + br {
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.1k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2k 字</span>
             </span>
         
         
             <span class="meta-info-item article-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>8 分钟</span>
             </span>
         
         
@@ -411,6 +411,48 @@ mjx-container[display="true"] + br {
 <p>如果当前元素与新数组的倒数第二个数一样，说明新数组已出现2次该数，该数不需要加入新数组，快指针直接后移，否则复制后再后移。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">        <span class="keyword">if</span>(nums.length&lt;<span class="number">3</span>) <span class="keyword">return</span> nums.length;</span><br><span class="line">        <span class="type">int</span> slow=<span class="number">2</span>, fast=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(fast&lt;nums.length){</span><br><span class="line">            <span class="keyword">if</span>(nums[slow-<span class="number">2</span>]!=nums[fast]){</span><br><span class="line">                nums[slow++]=nums[fast++];</span><br><span class="line">            }<span class="keyword">else</span>{</span><br><span class="line">                fast++;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="169-多数元素-摩尔投票"><a href="#169-多数元素-摩尔投票" class="headerlink" title="169. 多数元素-摩尔投票"></a>169. 多数元素-摩尔投票</h2><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/majority-element/?envType=study-plan-v2&envId=top-interview-150">169. 多数元素 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
+<p>寻找长度为n的数组中出现次数大于 <code>⌊ n/2 ⌋</code> 的多数元素。</p>
+<blockquote>
+<p>输入：nums = [3,2,3]<br>输出：3</p>
+</blockquote>
+<p><strong>摩尔投票</strong></p>
+<ol>
+<li>记多数元素的票为1，其他为-1，那么所有数字的票数和一定&gt;0</li>
+<li>若前a个数字票数和=0，那么剩余的n-a个数字的票数和一定&gt;0，多数元素依旧不变。</li>
+</ol>
+<p>因此，票数和=0时，可以缩小剩余数组区间。假设首个元素n为多数元素x，那么当n=x时，抵消的元素中一半是多数元素x；当n!=x时，抵消的多数元素可能是0-一半。因此最后一轮假设的必定是多数元素。</p>
+<blockquote>
+<p>多数元素为t个，t&gt;n/2，2(n-t)&lt;n，因此抵消到最后剩余的必定是多数元素为首的数组。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">majorityElement</span><span class="params">(<span class="type">int</span>[] nums)</span> {</span><br><span class="line">        <span class="type">int</span> x=<span class="number">0</span>, votes=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> n:nums){</span><br><span class="line">            <span class="keyword">if</span>(votes==<span class="number">0</span>) x=n;</span><br><span class="line">            votes += n == x ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="189-轮转数组-todo-旋转平移类"><a href="#189-轮转数组-todo-旋转平移类" class="headerlink" title="189. 轮转数组 #todo 旋转平移类"></a>189. 轮转数组 #todo 旋转平移类</h2><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/rotate-array/description/?envType=study-plan-v2&envId=top-interview-150">189. 轮转数组 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
+<p>首先反转整个数组，然后反转前k个，反转后n-k个，就是轮转后的数组。</p>
+<p><strong>注意</strong>：k=k%n。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">rotate</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> {</span><br><span class="line">        <span class="type">int</span> n=nums.length;</span><br><span class="line">        k=k%n;</span><br><span class="line">        <span class="keyword">if</span>(k==<span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        reverse(nums, <span class="number">0</span>, nums.length-<span class="number">1</span>);</span><br><span class="line">        reverse(nums, <span class="number">0</span>, k-<span class="number">1</span>);</span><br><span class="line">        reverse(nums, k, nums.length-<span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">reverse</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> start, <span class="type">int</span> end)</span>{</span><br><span class="line">        <span class="keyword">while</span>(start&lt;end){</span><br><span class="line">            <span class="type">int</span> tmp=nums[start];</span><br><span class="line">            nums[start++]=nums[end];</span><br><span class="line">            nums[end--]=tmp;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h1 id="121-买卖股票的最佳时机"><a href="#121-买卖股票的最佳时机" class="headerlink" title="121. 买卖股票的最佳时机"></a>121. 买卖股票的最佳时机</h1><p><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/description/?envType=study-plan-v2&envId=top-interview-150">121. 买卖股票的最佳时机 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></p>
+<p>只能在某天买入，未来某天卖出。</p>
+<blockquote>
+<p>输入：[7,1,5,3,6,4]<br>输出：5<br>解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。<br>     注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</p>
+</blockquote>
+<p><strong>思路</strong>：只要知道这天之前最低是多少，就是当日最大利润，因此遍历时记录min以及当前利润，更新最大利润即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span><span class="params">(<span class="type">int</span>[] prices)</span> {</span><br><span class="line">        <span class="type">int</span> minPrice=prices[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++){</span><br><span class="line">            res=Math.max(res, prices[i]-minPrice);</span><br><span class="line">            minPrice=Math.min(minPrice, prices[i]);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="122-买卖股票的最佳时机-II-力扣（LeetCode）"><a href="#122-买卖股票的最佳时机-II-力扣（LeetCode）" class="headerlink" title="122. 买卖股票的最佳时机 II - 力扣（LeetCode）"></a><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/?envType=study-plan-v2&envId=top-interview-150">122. 买卖股票的最佳时机 II - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></h2><p>在每一天，你可以决定是否购买和/或出售股票。你在任何时候 <strong>最多</strong> 只能持有 <strong>一股</strong> 股票。你也可以先购买，然后在 <strong>同一天</strong> 出售。</p>
+<blockquote>
+<p>输入：prices = [7,1,5,3,6,4]<br>输出：7<br>解释：在第 2 天（股票价格 = 1）的时候买入，在第 3 天（股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5 - 1 = 4 。<br>     随后，在第 4 天（股票价格 = 3）的时候买入，在第 5 天（股票价格 = 6）的时候卖出, 这笔交易所能获得利润 = 6 - 3 = 3 。<br>     总利润为 4 + 3 = 7 。</p>
+</blockquote>
+<p>思路：只要比前一天高，就买入，第二天就卖出。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProfit</span><span class="params">(<span class="type">int</span>[] prices)</span> {</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++){</span><br><span class="line">            <span class="keyword">if</span>(prices[i]&gt;prices[i-<span class="number">1</span>]){</span><br><span class="line">                res+=prices[i]-prices[i-<span class="number">1</span>];</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h2 id="55-跳跃游戏-力扣（LeetCode）-动态规划"><a href="#55-跳跃游戏-力扣（LeetCode）-动态规划" class="headerlink" title="55. 跳跃游戏 - 力扣（LeetCode）- 动态规划"></a><a class="link" target="_blank" rel="noopener" href="https://leetcode.cn/problems/jump-game/?envType=study-plan-v2&envId=top-interview-150">55. 跳跃游戏 - 力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a>- 动态规划</h2><p>给你一个非负整数数组 <code>nums</code> ，你最初位于数组的 <strong>第一个下标</strong> 。数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
+<p>判断你是否能够到达最后一个下标，如果可以，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
+<blockquote>
+<p>输入：nums = [2,3,1,1,4]<br>输出：true<br>解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。</p>
+</blockquote>
+<p>思路：对于每个位置</p>
 
                 </div>
 
@@ -464,6 +506,22 @@ mjx-container[display="true"] + br {
 
                 
                     <div class="article-nav">
+                        
+                            <div class="article-prev">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/07/03/Netty%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5-%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84-%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/"
+                                   title="Netty笔记：基础概念&amp;技术架构&amp;核心组件"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                      <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                            <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Netty笔记：基础概念&amp;技术架构&amp;核心组件</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
                         
                         
                             <div class="article-next">
@@ -541,7 +599,7 @@ mjx-container[display="true"] + br {
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E5%90%91%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">同向双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-text">88. 合并两个有序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-text">27. 移除元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9"><span class="nav-text">26. 删除有序数组中的重复项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#80-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9-II"><span class="nav-text">80. 删除有序数组中的重复项 II</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E5%90%91%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">同向双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-text">88. 合并两个有序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-text">27. 移除元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9"><span class="nav-text">26. 删除有序数组中的重复项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#80-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9-II"><span class="nav-text">80. 删除有序数组中的重复项 II</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0-%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8"><span class="nav-text">169. 多数元素-摩尔投票</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#189-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84-todo-%E6%97%8B%E8%BD%AC%E5%B9%B3%E7%A7%BB%E7%B1%BB"><span class="nav-text">189. 轮转数组 #todo 旋转平移类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA"><span class="nav-text">121. 买卖股票的最佳时机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#122-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-II-%E5%8A%9B%E6%89%A3%EF%BC%88LeetCode%EF%BC%89"><span class="nav-text">122. 买卖股票的最佳时机 II - 力扣（LeetCode）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#55-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-%E5%8A%9B%E6%89%A3%EF%BC%88LeetCode%EF%BC%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-text">55. 跳跃游戏 - 力扣（LeetCode）- 动态规划</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -581,7 +639,7 @@ mjx-container[display="true"] + br {
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">5.8k</span>
+                    <span class="item-value border-box word">17.6k</span>
                 </span>
             
 
@@ -724,7 +782,7 @@ mjx-container[display="true"] + br {
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E5%90%91%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">同向双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-text">88. 合并两个有序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-text">27. 移除元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9"><span class="nav-text">26. 删除有序数组中的重复项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#80-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9-II"><span class="nav-text">80. 删除有序数组中的重复项 II</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E5%90%91%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-text">同向双指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-text">88. 合并两个有序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-text">27. 移除元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9"><span class="nav-text">26. 删除有序数组中的重复项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#80-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9-II"><span class="nav-text">80. 删除有序数组中的重复项 II</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0-%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8"><span class="nav-text">169. 多数元素-摩尔投票</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#189-%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84-todo-%E6%97%8B%E8%BD%AC%E5%B9%B3%E7%A7%BB%E7%B1%BB"><span class="nav-text">189. 轮转数组 #todo 旋转平移类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA"><span class="nav-text">121. 买卖股票的最佳时机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#122-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-II-%E5%8A%9B%E6%89%A3%EF%BC%88LeetCode%EF%BC%89"><span class="nav-text">122. 买卖股票的最佳时机 II - 力扣（LeetCode）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#55-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-%E5%8A%9B%E6%89%A3%EF%BC%88LeetCode%EF%BC%89-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-text">55. 跳跃游戏 - 力扣（LeetCode）- 动态规划</span></a></li></ol></li></ol>
     </div>
 </div>
 

@@ -325,7 +325,7 @@ mjx-container[display="true"] + br {
 
             <span class="meta-info-item article-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="pc" data-updated="Tue May 28 2024 21:46:59 GMT+0800">2024-05-28 21:46:59</span>
+                <span class="pc" data-updated="Sun Sep 29 2024 08:30:19 GMT+0800">2024-09-29 08:30:19</span>
             </span>
         
 
@@ -349,12 +349,12 @@ mjx-container[display="true"] + br {
         
         
             <span class="meta-info-item article-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>673 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>679 字</span>
             </span>
         
         
             <span class="meta-info-item article-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>3 分钟</span>
             </span>
         
         
@@ -392,8 +392,8 @@ mjx-container[display="true"] + br {
 <h2 id="使用GitHub-Pages部署到GitHub"><a href="#使用GitHub-Pages部署到GitHub" class="headerlink" title="使用GitHub Pages部署到GitHub"></a><strong>使用GitHub Pages部署到GitHub</strong></h2><blockquote>
 <p><a class="link" target="_blank" rel="noopener" href="https://easyhexo.com/1-Hexo-install-and-config/1-4-deploy-hexo.html#%E9%83%A8%E7%BD%B2%E5%88%B0-github">部署 Hexo | Easy Hexo 👨‍💻<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
-<p>Step 1: 创建一个仓库：<username>.github.io</username></p>
-<p>Step 2: 在<your_blog_name>（<username>.github.io）安装部署插件</username></your_blog_name></p>
+<p>Step 1: 创建一个仓库：<code>&lt;username&gt;</code>.github.io</p>
+<p>Step 2: 在<your_blog_name>（<code>&lt;username&gt;</code>.github.io）安装部署插件</your_blog_name></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-server --save</span><br></pre></td></tr></table></figure>
 
 <p>Step 3: 部署到 GitHub</p>
@@ -402,31 +402,30 @@ mjx-container[display="true"] + br {
 <h3 id="GitHub保存博客项目的源代码"><a href="#GitHub保存博客项目的源代码" class="headerlink" title="GitHub保存博客项目的源代码"></a>GitHub保存博客项目的源代码</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">本地博客项目根目录下运行</span></span><br><span class="line">git init</span><br><span class="line">git checkout -b hexo # 切换分支</span><br><span class="line">git add .</span><br><span class="line">git commit -m "init"</span><br><span class="line">git remote add origin git@github.com:isJinHu/isjinhu.github.io.git # 添加远程仓库</span><br><span class="line">git remote -v</span><br><span class="line">git push origin hexo:hexo # push到远程仓库的hexo分支</span><br></pre></td></tr></table></figure>
 
 <h1 id="Keep主题安装与配置"><a href="#Keep主题安装与配置" class="headerlink" title="Keep主题安装与配置"></a>Keep主题安装与配置</h1><blockquote>
-<p><a class="link" target="_blank" rel="noopener" href="https://v3.keep-docs.xpoet.cn/basis/configuration-guide/home_article.html">home_article | Keep 主题使用手册<i class="fas fa-external-link-alt"></i></a> &amp;&amp; <a class="link" target="_blank" rel="noopener" href="https://xpoet.cn/">XPoet’s Blog<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://v3.keep-docs.xpoet.cn/basis/configuration-guide/home_article.html">home_article | Keep 主题使用手册<i class="fas fa-external-link-alt"></i></a> &amp;&amp; <a class="link" target="_blank" rel="noopener" href="https://xpoet.cn/">XPoet's Blog<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <p>Step 1: 安装Keep主题</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;your_blog_name&gt;</span><br><span class="line">npm install hexo-theme-keep</span><br></pre></td></tr></table></figure>
 
-<p>Step 2: 使用Keep主题：在 Hexo 配置文件<code>_config.yml</code> 中将 theme 设置为 keep。</p>
+<p>Step 2: 使用Keep主题：在 Hexo 配置文件 <code>_config.yml</code> 中将 theme 设置为 keep。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: keep</span><br></pre></td></tr></table></figure>
 
-<p>Step 3：配置Keep主题：在<your_blog_name>文件夹下创建一个<code>_config.keep.yml</code>文件，参照文档进行配置：<a class="link" target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/tutorial/configuration-guide/base_info.html">base_info | Keep 主题使用指南<i class="fas fa-external-link-alt"></i></a></your_blog_name></p>
+<p>Step 3：配置Keep主题：在<your_blog_name>文件夹下创建一个 <code>_config.keep.yml</code>文件，参照文档进行配置：<a class="link" target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/tutorial/configuration-guide/base_info.html">base_info | Keep 主题使用指南<i class="fas fa-external-link-alt"></i></a></your_blog_name></p>
 <p>其他：</p>
 <ul>
 <li><p>可能用到的命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-theme-keep # 安装 keep 主题</span><br><span class="line">npm install hexo-filter-mathjax # 安装显示数学公式的插件</span><br><span class="line">npm install hexo-generator-searchdb # 安装站内搜索插件</span><br><span class="line">npm install hexo-wordcount # 安装统计字数插件</span><br><span class="line">hexo new page about # hexo创建页面命令，使用该命令创建about页面。</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-theme-keep # 安装 keep 主题</span><br><span class="line">npm install hexo-filter-mathjax # 安装显示数学公式的插件</span><br><span class="line">npm install hexo-generator-searchdb # 安装站内搜索插件</span><br><span class="line">npm install hexo-wordcount # 安装统计字数插件</span><br><span class="line">hexo new page about # hexo创建页面命令，使用该命令创建about页面。</span><br></pre></td></tr></table></figure></li>
 <li><p><a class="link" target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/advanced/mathjax.html">数学公式 | Keep 主题使用指南<i class="fas fa-external-link-alt"></i></a>：建议开启。</p>
 </li>
-<li><p>配置时的图标文件可以放在<code>source/images</code>文件夹中。</p>
+<li><p>配置时的图标文件可以放在 <code>source/images</code>文件夹中。</p>
 </li>
 <li><p>Gitalk设置：<a class="link" target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/tutorial/configuration-guide/comment.html#gitalk">comment | Keep 主题使用指南<i class="fas fa-external-link-alt"></i></a></p>
 </li>
 </ul>
-<h2 id="默认博客模板"><a href="#默认博客模板" class="headerlink" title="默认博客模板"></a>默认博客模板</h2><p>在<code>scaffolds/post.md</code>中可以设置默认模板，比如默认打开公式渲染等。</p>
+<h2 id="默认博客模板"><a href="#默认博客模板" class="headerlink" title="默认博客模板"></a>默认博客模板</h2><p>在 <code>scaffolds/post.md</code>中可以设置默认模板，比如默认打开公式渲染等。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> {{ <span class="string">title</span> }}</span><br><span class="line"><span class="attr">date:</span> {{ <span class="string">date</span> }}</span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">tags:</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="图片插入：结合Typora"><a href="#图片插入：结合Typora" class="headerlink" title="图片插入：结合Typora"></a>图片插入：结合Typora</h2><p>Step 1：修改<code>_config.yml</code>文件</p>
+<h2 id="图片插入：结合Typora"><a href="#图片插入：结合Typora" class="headerlink" title="图片插入：结合Typora"></a>图片插入：结合Typora</h2><p>Step 1：修改 <code>_config.yml</code>文件</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span> <span class="comment"># 将这个配置项改为true，这样hexo new “postname"时会创建一个同名文件夹</span></span><br><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
 <p>Step 2：安装插件</p>
@@ -496,35 +495,19 @@ mjx-container[display="true"] + br {
                             <div class="article-prev">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/05/10/GitHub-Actions-Docker%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/"
-                                   title="GitHub Actions &amp; Docker实现自动化部署"
+                                   href="/2023/08/28/hello-world/"
+                                   title="Hello World"
                                 >
                                     <span class="left arrow-icon flex-center">
                                       <i class="fas fa-chevron-left"></i>
                                     </span>
                                             <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">GitHub Actions &amp; Docker实现自动化部署</span>
+                                        <span class="post-nav-title-item text-ellipsis">Hello World</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
                             </div>
                         
-                        
-                            <div class="article-next">
-                                <a class="next"
-                                   rel="next"
-                                   href="/2023/08/26/hello-world/"
-                                   title="Hello World"
-                                >
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Hello World</span>
-                                        <span class="post-nav-item">下一篇</span>
-                                    </span>
-                                            <span class="right arrow-icon flex-center">
-                                      <i class="fas fa-chevron-right"></i>
-                                    </span>
-                                </a>
-                            </div>
                         
                     </div>
                 
@@ -625,7 +608,7 @@ mjx-container[display="true"] + br {
             
                 <span class="count-box border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">5.8k</span>
+                    <span class="item-value border-box word">17.6k</span>
                 </span>
             
 
