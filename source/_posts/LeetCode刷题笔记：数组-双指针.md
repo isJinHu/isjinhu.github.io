@@ -140,3 +140,130 @@ class Solution {
 }
 ```
 
+# 数组
+
+## 169. 多数元素-摩尔投票
+
+[169. 多数元素 - 力扣（LeetCode）](https://leetcode.cn/problems/majority-element/?envType=study-plan-v2&envId=top-interview-150)
+
+寻找长度为n的数组中出现次数大于 `⌊ n/2 ⌋` 的多数元素。
+
+> 输入：nums = [3,2,3]
+> 输出：3
+
+**摩尔投票**
+
+1. 记多数元素的票为1，其他为-1，那么所有数字的票数和一定>0
+2. 若前a个数字票数和=0，那么剩余的n-a个数字的票数和一定>0，多数元素依旧不变。
+
+因此，票数和=0时，可以缩小剩余数组区间。假设首个元素n为多数元素x，那么当n=x时，抵消的元素中一半是多数元素x；当n!=x时，抵消的多数元素可能是0-一半。因此最后一轮假设的必定是多数元素。
+
+> 多数元素为t个，t>n/2，2(n-t)<n，因此抵消到最后剩余的必定是多数元素为首的数组。
+
+```java
+class Solution {
+    public int majorityElement(int[] nums) {
+        int x=0, votes=0;
+        for(int n:nums){
+            if(votes==0) x=n;
+            votes += n == x ? 1 : -1;
+        }
+        return x;
+    }
+}
+```
+
+## 189. 轮转数组 #todo 旋转平移类
+
+[189. 轮转数组 - 力扣（LeetCode）](https://leetcode.cn/problems/rotate-array/description/?envType=study-plan-v2&envId=top-interview-150)
+
+首先反转整个数组，然后反转前k个，反转后n-k个，就是轮转后的数组。
+
+**注意**：k=k%n。
+
+```java
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int n=nums.length;
+        k=k%n;
+        if(k==0) return;
+        reverse(nums, 0, nums.length-1);
+        reverse(nums, 0, k-1);
+        reverse(nums, k, nums.length-1);
+    }
+
+    private void reverse(int[] nums, int start, int end){
+        while(start<end){
+            int tmp=nums[start];
+            nums[start++]=nums[end];
+            nums[end--]=tmp;
+        }
+    }
+}
+```
+
+# 121. 买卖股票的最佳时机
+
+[121. 买卖股票的最佳时机 - 力扣（LeetCode）](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/description/?envType=study-plan-v2&envId=top-interview-150)
+
+只能在某天买入，未来某天卖出。
+
+
+> 输入：[7,1,5,3,6,4]
+> 输出：5
+> 解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+>      注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
+
+**思路**：只要知道这天之前最低是多少，就是当日最大利润，因此遍历时记录min以及当前利润，更新最大利润即可。
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        int minPrice=prices[0];
+        int res=0;
+        for(int i=1;i<prices.length;i++){
+            res=Math.max(res, prices[i]-minPrice);
+            minPrice=Math.min(minPrice, prices[i]);
+        }
+        return res;
+    }
+}
+```
+
+## [122. 买卖股票的最佳时机 II - 力扣（LeetCode）](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/?envType=study-plan-v2&envId=top-interview-150)
+
+在每一天，你可以决定是否购买和/或出售股票。你在任何时候 **最多** 只能持有 **一股** 股票。你也可以先购买，然后在 **同一天** 出售。
+
+> 输入：prices = [7,1,5,3,6,4]
+> 输出：7
+> 解释：在第 2 天（股票价格 = 1）的时候买入，在第 3 天（股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5 - 1 = 4 。
+>      随后，在第 4 天（股票价格 = 3）的时候买入，在第 5 天（股票价格 = 6）的时候卖出, 这笔交易所能获得利润 = 6 - 3 = 3 。
+>      总利润为 4 + 3 = 7 。
+
+思路：只要比前一天高，就买入，第二天就卖出。
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        int res=0;
+        for(int i=1;i<prices.length;i++){
+            if(prices[i]>prices[i-1]){
+                res+=prices[i]-prices[i-1];
+            }
+        }
+        return res;
+    }
+}
+```
+
+## [55. 跳跃游戏 - 力扣（LeetCode）](https://leetcode.cn/problems/jump-game/?envType=study-plan-v2&envId=top-interview-150)- 动态规划
+
+给你一个非负整数数组 `nums` ，你最初位于数组的 **第一个下标** 。数组中的每个元素代表你在该位置可以跳跃的最大长度。
+
+判断你是否能够到达最后一个下标，如果可以，返回 `true` ；否则，返回 `false` 。
+
+> 输入：nums = [2,3,1,1,4]
+> 输出：true
+> 解释：可以先跳 1 步，从下标 0 到达下标 1, 然后再从下标 1 跳 3 步到达最后一个下标。
+
+思路：对于每个位置

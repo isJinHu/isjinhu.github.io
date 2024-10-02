@@ -6,7 +6,6 @@ tags:
 - GitHub
 - Hexo
 ---
-
 关于如何使用GitHub Pages和Hexo搭建个人博客并进行写作（使用Keep主题）。
 
 <!--more-->
@@ -19,6 +18,17 @@ tags:
 
 1. 确认本地已经安装 Git 和 Node.js
 2. 安装hexo: `npm install -g hexo-cli`
+
+   > **Tips**：如果是mac需要使用sudo，一直卡顿可以尝试设置镜像，或者安装cnpm
+   >
+   > ```shell
+   > sudo npm install -g hexo-cli
+   > // 设置镜像
+   > npm config set registry=https://registry.npmmirror.com
+   > // 安装cnpm
+   > sudo npm install -g cnpm
+   > sudo cnpm install -g hexo-cli // 使用cnpm重新安装
+   > ```
 3. 在本地创建一个文件夹，然后往这个文件夹中安装Hexo
 4. 配置 Hexo，其配置文件为_config.yml：[配置 Hexo | Easy Hexo 👨‍💻](https://easyhexo.com/1-Hexo-install-and-config/1-3-config-hexo.html#配置-hexo-2)
 
@@ -32,9 +42,9 @@ tags:
 
 > [部署 Hexo | Easy Hexo 👨‍💻](https://easyhexo.com/1-Hexo-install-and-config/1-4-deploy-hexo.html#部署到-github)
 
-Step 1: 创建一个仓库：<username>.github.io
+Step 1: 创建一个仓库：`<username>`.github.io
 
-Step 2: 在<your_blog_name>（<username>.github.io）安装部署插件
+Step 2: 在<your_blog_name>（`<username>`.github.io）安装部署插件
 
 ```shell
  npm install hexo-deployer-git --save
@@ -62,7 +72,7 @@ git push origin hexo:hexo # push到远程仓库的hexo分支
 
 # Keep主题安装与配置
 
-> [home_article | Keep 主题使用手册](https://v3.keep-docs.xpoet.cn/basis/configuration-guide/home_article.html) && [XPoet's Blog](https://xpoet.cn/)
+> [home_article | Keep 主题使用手册](https://v3.keep-docs.xpoet.cn/basis/configuration-guide/home_article.html) && [XPoet&#39;s Blog](https://xpoet.cn/)
 
 Step 1: 安装Keep主题
 
@@ -71,13 +81,13 @@ Step 1: 安装Keep主题
  npm install hexo-theme-keep
 ```
 
-Step 2: 使用Keep主题：在 Hexo 配置文件`_config.yml` 中将 theme 设置为 keep。
+Step 2: 使用Keep主题：在 Hexo 配置文件 `_config.yml` 中将 theme 设置为 keep。
 
 ```
  theme: keep
 ```
 
-Step 3：配置Keep主题：在<your_blog_name>文件夹下创建一个`_config.keep.yml`文件，参照文档进行配置：[base_info | Keep 主题使用指南](https://keep-docs.xpoet.cn/tutorial/configuration-guide/base_info.html)
+Step 3：配置Keep主题：在<your_blog_name>文件夹下创建一个 `_config.keep.yml`文件，参照文档进行配置：[base_info | Keep 主题使用指南](https://keep-docs.xpoet.cn/tutorial/configuration-guide/base_info.html)
 
 其他：
 
@@ -90,16 +100,13 @@ Step 3：配置Keep主题：在<your_blog_name>文件夹下创建一个`_config.
    npm install hexo-wordcount # 安装统计字数插件
    hexo new page about # hexo创建页面命令，使用该命令创建about页面。
   ```
-
 - [数学公式 | Keep 主题使用指南](https://keep-docs.xpoet.cn/advanced/mathjax.html)：建议开启。
-
-- 配置时的图标文件可以放在`source/images`文件夹中。
-
+- 配置时的图标文件可以放在 `source/images`文件夹中。
 - Gitalk设置：[comment | Keep 主题使用指南](https://keep-docs.xpoet.cn/tutorial/configuration-guide/comment.html#gitalk)
 
 ## 默认博客模板
 
-在`scaffolds/post.md`中可以设置默认模板，比如默认打开公式渲染等。
+在 `scaffolds/post.md`中可以设置默认模板，比如默认打开公式渲染等。
 
 ```yaml
 title: {{ title }}
@@ -110,7 +117,7 @@ tags:
 
 ## 图片插入：结合Typora
 
-Step 1：修改`_config.yml`文件
+Step 1：修改 `_config.yml`文件
 
 ```yaml
 post_asset_folder: true # 将这个配置项改为true，这样hexo new “postname"时会创建一个同名文件夹

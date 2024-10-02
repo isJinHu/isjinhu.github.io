@@ -139,5 +139,6 @@ class Solution {
 
 # 贪心
 
+## [45. 跳跃游戏 II - 力扣（LeetCode）](https://leetcode.cn/problems/jump-game-ii/description/?envType=study-plan-v2&envId=top-interview-150)
 
 
