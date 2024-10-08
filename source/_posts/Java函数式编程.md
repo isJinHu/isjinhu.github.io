@@ -178,3 +178,32 @@ class OptionalTest{
     }
 }
 ```
+
+# 例子
+
+```java
+public static int sumOfEvenNumbers(List<Integer> numbers) {
+    // 求偶数和
+    // return numbers.stream().filter(i->i%2==0).reduce(0, Integer::sum);
+    // return numbers.stream().filter(i -> i % 2 == 0).reduce(0, (a, b) -> a + b);
+    return numbers.stream().filter(i -> i % 2 == 0).mapToInt(Integer::intValue).sum();
+
+}
+
+public static int getLength(Optional<String> optionalString) {
+    // 求字符串长度，如果为空则返回0
+    return optionalString.map(String::length).orElse(0);
+}
+
+
+public static List<String> convertToUpperCase(List<String> strings) {
+    // 转化为大写
+    return strings.stream().map(String::toUpperCase).toList();
+}
+
+public static int findMinimum(List<Integer> numbers) {
+    // 找到最小值
+    return numbers.stream().min(Integer::compareTo).orElse(Integer.MIN_VALUE);
+}
+```
+
